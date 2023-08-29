@@ -1,4 +1,4 @@
-package com.zishi.algorithm;
+package com.zishi.algorithm.queue;
 
 import java.util.Stack;
 

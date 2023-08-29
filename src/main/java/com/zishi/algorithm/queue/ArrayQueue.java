@@ -1,4 +1,4 @@
-package com.zishi.algorithm;
+package com.zishi.algorithm.queue;
 
 /**
  * @description: 使数组模拟队列类

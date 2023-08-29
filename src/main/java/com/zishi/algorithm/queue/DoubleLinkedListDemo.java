@@ -1,4 +1,4 @@
-package com.zishi.algorithm;
+package com.zishi.algorithm.queue;
 
 public class DoubleLinkedListDemo {
     public static void main(String[] args) {

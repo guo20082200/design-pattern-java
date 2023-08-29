@@ -1,10 +1,10 @@
-package com.zishi.algorithm;
+package com.zishi.algorithm.queue;
 
 import java.util.Scanner;
 
-public class TestArrayQueue01 {
+public class TestCircleArrayQueue01 {
     public static void main(String[] args) {
-        ArrayQueue arrayQueue = new ArrayQueue(3);
+        CircleArrayQueue arrayQueue = new CircleArrayQueue(3);
         Scanner scanner = new Scanner(System.in);
         char key = ' ';//接收用户输入
         boolean f = true;

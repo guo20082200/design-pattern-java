@@ -1,4 +1,4 @@
-package com.zishi.algorithm;
+package com.zishi.algorithm.list;
 
 import java.io.*;
 import java.util.Arrays;
