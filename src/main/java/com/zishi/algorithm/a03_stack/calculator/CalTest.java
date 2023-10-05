@@ -1,6 +1,8 @@
-package com.zishi.algorithm.stack.calculator;
+package com.zishi.algorithm.a03_stack.calculator;
 
 import org.junit.Test;
+
+import java.util.List;
 
 public class CalTest {
 
@@ -137,6 +139,16 @@ public class CalTest {
         }//将数栈中最后一个打印出来
         System.out.println("表达式为：" + experssion + "结果为：" + numberStack.pop());
 
+    }
+
+
+    @Test
+    public void test03() {
+        String expression = "7+2*6-4+8";
+        List<String> infixExperssionList = PolandNotation.toInfixExperssionList(expression);
+        List<String> suffixExpression = PolandNotation.parseSuffixExpression(infixExperssionList);
+        int calculate = PolandNotation.calculate(suffixExpression);
+        System.out.println(calculate); // 23
     }
 
 

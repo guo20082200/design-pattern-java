@@ -1,4 +1,4 @@
-package com.zishi.algorithm.stack.calculator;
+package com.zishi.algorithm.a03_stack.calculator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,5 +87,37 @@ public class PolandNotation {
         } while (i < s.length());
         return ls;
 
+    }
+
+    //将得到的中缀表达式对应的list 转换为后缀表达式对应的list
+    public static List<String> parseSuffixExpression(List<String> ls) {
+        //定义两个栈
+        Stack<String> s1 = new Stack<String>();
+        //因为s2在整个转换过程中没有pop操作，而且还要逆序输出，因此直接使用List
+        List<String> s2 = new ArrayList<String>();
+        //遍历ls
+        for (String item : ls) {
+            if (item.matches("\\d+")) {
+                s2.add(item);
+            } else if (item.equals("(")) {
+                s1.push(item);
+            } else if (item.equals(")")) {
+                while (!s1.peek().equals("(")) {
+                    s2.add(s1.pop());//s1一次弹出到s2
+                }
+                s1.pop();//将（弹出s1 消除(
+            } else {
+                //当item运算符的优先级小于s1栈顶运算符的优先级时，s1栈顶的运算符弹出栈，压入到s2
+                while (s1.size() != 0 && Operation.getValue(s1.peek()) >= Operation.getValue(item)) {
+                    s2.add(s1.pop());
+                }
+                //把当前item运算符，压入栈中
+                s1.push(item);
+            }
+        }
+        while (s1.size() != 0) {
+            s2.add(s1.pop());
+        }
+        return s2;//顺序输出即可
     }
 }

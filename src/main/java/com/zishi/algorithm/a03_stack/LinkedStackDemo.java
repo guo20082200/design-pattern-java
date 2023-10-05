@@ -1,4 +1,4 @@
-package com.zishi.algorithm.stack;
+package com.zishi.algorithm.a03_stack;
 
 
 public class LinkedStackDemo {

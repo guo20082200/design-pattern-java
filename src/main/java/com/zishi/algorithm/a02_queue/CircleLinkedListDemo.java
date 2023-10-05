@@ -1,4 +1,4 @@
-package com.zishi.algorithm.queue;
+package com.zishi.algorithm.a02_queue;
 
 public class CircleLinkedListDemo {
 

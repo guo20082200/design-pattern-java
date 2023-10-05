@@ -1,12 +1,12 @@
-package com.zishi.algorithm.stack;
+package com.zishi.algorithm.a03_stack;
 
 //定义一个栈
-public class ArrayStack2 {
+public class ArrayStack {
     private final int maxSize;//栈的大小
     private final int[] stack; //模拟栈的数组
     private int top = -1;//初始化为栈顶
 
-    public ArrayStack2(int maxSize) {
+    public ArrayStack(int maxSize) {
         this.maxSize = maxSize;
         stack = new int[this.maxSize];
     }
