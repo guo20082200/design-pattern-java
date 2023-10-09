@@ -1,7 +1,6 @@
 package com.zishi.pattern.behavioral.chain;
 public class Test {
 
-    @org.junit.Test
     public void testFilter(){
 
         String msg = "<html>敏感字眼</html>";

@@ -1,12 +1,10 @@
 package com.zishi.algorithm.a03_stack.calculator;
 
-import org.junit.Test;
 
 import java.util.List;
 
 public class CalTest {
 
-    @Test
     public void test01() {
         String expression = "7+2*6-2";
         //创建两个栈
@@ -66,10 +64,6 @@ public class CalTest {
 
     }
 
-    /**
-     * d
-     */
-    @Test
     public void test02() {
         String experssion = "70+2*6-4+8";
         //创建两个栈
@@ -142,7 +136,6 @@ public class CalTest {
     }
 
 
-    @Test
     public void test03() {
         String expression = "7+2*6-4+8";
         List<String> infixExperssionList = PolandNotation.toInfixExperssionList(expression);

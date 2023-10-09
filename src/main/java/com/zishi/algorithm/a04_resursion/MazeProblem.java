@@ -1,6 +1,5 @@
 package com.zishi.algorithm.a04_resursion;
 
-import org.junit.Test;
 
 public class MazeProblem {
     public static int[][] mapArray = new int[][]{
@@ -20,7 +19,6 @@ public class MazeProblem {
     public static int[] start = {1, 1};
     public static int[] end = {10, 12};
 
-    @Test
     public void test01() {
         //输出地图
         System.out.println("------MAP-----");
