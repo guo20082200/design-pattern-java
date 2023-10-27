@@ -1,4 +1,7 @@
-package com.zishi.algorithm.a07_tree;
+package com.zishi.algorithm.a07_tree.ercha;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Node {
     private int no;
@@ -208,6 +211,33 @@ public class Node {
         if (this.right != null) {
             this.right.delete(no);
         }
+    }
+
+
+    /**
+     * 顺序存储二叉树：
+     * 二叉树的顺序存储，就是用一组连续的存储单元存放二叉树中的结点。
+     * 因此，必须把二叉树的所有结点安排成为一个恰当的序列，结点在这个序列中的相互位置能反映出结点之间的逻辑关系，
+     * 用编号的方法从树根起，自上层至下层，每层自左至右地给所有结点编号,缺点是有可能对存储空间造成极大的浪费，
+     * 在最坏的情况下，一个深度为k且只有k个结点的右单支树需要2k-1个结点存储空间。
+     *
+     * 依据二叉树的性质，完全二叉树和满二叉树采用顺序存储比较合适，
+     * 树中结点的序号可以唯一地反映出结点之间的逻辑关系，
+     * 这样既能够最大可能地节省存储空间，
+     * 又可以利用数组元素的下标值确定结点在二叉树中的位置，以及结点之间的关系。
+     *
+     * 顺序存储二叉树的特点：
+     * 1. 顺序存储二叉树通常只考虑完全二叉树
+     * 2. 第n个元素的左子节点为：2*n + 1
+     * 3. 第n个元素的右子节点为：2*n + 1
+     * 4. 第n个元素的父节点为：(n - 1)/2
+     * 其中：n表示二叉树中的第几个元素（从0开始）
+     */
+    public List<Node> convert() {
+
+        List<Node> res = new ArrayList<>();
+
+        return res;
     }
 
 }
