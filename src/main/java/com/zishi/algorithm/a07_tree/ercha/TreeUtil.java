@@ -2,8 +2,8 @@ package com.zishi.algorithm.a07_tree.ercha;
 
 public class TreeUtil {
 
-    public static Binarytree init() {
-        Binarytree tree = new Binarytree();
+    public static BinaryTree init() {
+        BinaryTree tree = new BinaryTree();
         Node root = new Node(1, "one"); //node1
         Node node2 = new Node(2, "two");
         Node node3 = new Node(3, "three");

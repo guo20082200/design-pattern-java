@@ -2,7 +2,7 @@ package com.zishi.algorithm.a07_tree.ercha;
 
 import java.util.Objects;
 
-public class Binarytree {
+public class BinaryTree {
     private Node root;
 
     public void setRoot(Node root) {

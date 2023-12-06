@@ -9,7 +9,7 @@ public class MainTest {
 
     // 遍历测试
     public static void test01() {
-        Binarytree tree = TreeUtil.init();
+        BinaryTree tree = TreeUtil.init();
         System.out.println("前序："); //1 2 3 4
         tree.pre();
         System.out.println("中序："); // 2 1 3 4
@@ -20,7 +20,7 @@ public class MainTest {
 
     // 查找测试
     public static void test02() {
-        Binarytree tree = TreeUtil.init();
+        BinaryTree tree = TreeUtil.init();
         System.out.println("前序查找");
         Node res = tree.preSearch(2);
         if (res != null) {
