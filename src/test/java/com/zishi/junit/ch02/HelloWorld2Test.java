@@ -1,5 +1,6 @@
-package com.zishi.junit;
+package com.zishi.junit.ch02;
 
+import com.zishi.junit.HelloWorld;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

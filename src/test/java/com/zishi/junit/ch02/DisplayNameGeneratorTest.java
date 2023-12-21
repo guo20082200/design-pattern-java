@@ -1,4 +1,4 @@
-package com.zishi.junit;
+package com.zishi.junit.ch02;
 
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;

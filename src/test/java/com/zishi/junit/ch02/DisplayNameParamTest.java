@@ -1,4 +1,4 @@
-package com.zishi.junit;
+package com.zishi.junit.ch02;
 
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
