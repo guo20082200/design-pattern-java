@@ -1,12 +1,14 @@
 package com.zishi.junit.ch22;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Flight {
     private String flightNumber;
     private int seats;
-    private int passengers;
+    private int passengersNumber;
     private String origin;
     private String destination;
     private boolean flying;
@@ -15,6 +17,24 @@ public class Flight {
     private String flightNumberRegex = "^[A-Z]{2}\\d{3,4}$";
     private Pattern pattern = Pattern.compile(flightNumberRegex);
 
+    Set<Passenger> passengers = new HashSet<>();
+
+    public boolean addPassenger(Passenger passenger) {
+        if (passengers.size() >= seats) {
+            throw new RuntimeException(
+                    "Cannot add more passengers than the capacity of the flight!");
+        }
+        return passengers.add(passenger);
+    }
+
+    public boolean removePassenger(Passenger passenger) {
+        return passengers.remove(passenger);
+    }
+
+    public int getPassengersNumber() {
+        return passengers.size();
+    }
+
     public Flight(String flightNumber, int seats) {
         Matcher matcher = pattern.matcher(flightNumber);
         if (!matcher.matches()) {
@@ -22,7 +42,7 @@ public class Flight {
         }
         this.flightNumber = flightNumber;
         this.seats = seats;
-        this.passengers = 0;
+        this.passengersNumber = 0;
         this.flying = false;
         this.takenOff = false;
         this.landed = false;
@@ -37,15 +57,15 @@ public class Flight {
     }
 
     public void setSeats(int seats) {
-        if (passengers > seats) {
+        if (passengersNumber > seats) {
             throw new RuntimeException("Cannot reduce the number of seats under the number of existing passengers !");
         }
         this.seats = seats;
     }
 
-    public int getPassengers() {
-        return passengers;
-    }
+    /*public int getPassengersNumber() {
+        return passengersNumber;
+    }*/
 
     public String getOrigin() {
         return origin;
@@ -87,10 +107,10 @@ public class Flight {
     }
 
     public void addPassenger() {
-        if (passengers >= seats) {
+        if (passengersNumber >= seats) {
             throw new RuntimeException("Not enough seats!");
         }
-        passengers++;
+        passengersNumber++;
     }
 
     public void takeOff() {
