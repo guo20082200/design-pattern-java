@@ -1,0 +1,180 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > MazeProblem</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zishi.algorithm.a04_resursion</a>
+</div>
+
+<h1>Coverage Summary for Class: MazeProblem (com.zishi.algorithm.a04_resursion)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MazeProblem</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/30)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zishi.algorithm.a04_resursion;
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;public class MazeProblem {</b>
+<b class="nc">&nbsp;    public static int[][] mapArray = new int[][]{</b>
+&nbsp;            new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+&nbsp;            new int[]{1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1},
+&nbsp;            new int[]{1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1},
+&nbsp;            new int[]{1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1},
+&nbsp;            new int[]{1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1},
+&nbsp;            new int[]{1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1},
+&nbsp;            new int[]{1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
+&nbsp;            new int[]{1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1},
+&nbsp;            new int[]{1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1},
+&nbsp;            new int[]{1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1},
+&nbsp;            new int[]{1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1},
+&nbsp;            new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
+&nbsp;
+<b class="nc">&nbsp;    public static int[] start = {1, 1};</b>
+<b class="nc">&nbsp;    public static int[] end = {10, 12};</b>
+&nbsp;
+&nbsp;    public void test01() {
+&nbsp;        //输出地图
+<b class="nc">&nbsp;        System.out.println(&quot;------MAP-----&quot;);</b>
+<b class="nc">&nbsp;        for (int i = 0; i &lt; mapArray.length; i++) {</b>
+<b class="nc">&nbsp;            for (int j = 0; j &lt; mapArray[0].length; j++) {</b>
+<b class="nc">&nbsp;                System.out.print(mapArray[i][j] + &quot; &quot;);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            System.out.println();</b>
+&nbsp;        }
+&nbsp;        //使用递归
+<b class="nc">&nbsp;        setWay(mapArray, start[0], start[1], end);</b>
+&nbsp;        //输出新的地图，小球走过的通路
+<b class="nc">&nbsp;        System.out.println(&quot;------NEWMAP-----&quot;);</b>
+<b class="nc">&nbsp;        for (int i = 0; i &lt; mapArray.length; i++) {</b>
+<b class="nc">&nbsp;            for (int j = 0; j &lt; mapArray[0].length; j++) {</b>
+<b class="nc">&nbsp;                System.out.print(mapArray[i][j] + &quot; &quot;);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            System.out.println();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 如果小球可以到达end，则说明通路找到
+&nbsp;     * 约定：当map[i][j]为0表示该点没有走过，1的时候为墙；2的时候表示一个通路；3表示该点探测过了，但是不通
+&nbsp;     * 走迷宫时候的策略：下 右 上 左，如果该点走不通在回溯
+&nbsp;     *
+&nbsp;     * @param mapArray 地图
+&nbsp;     * @param startx,  starty   起始位置
+&nbsp;     * @param end      结束位置
+&nbsp;     * @return
+&nbsp;     */
+&nbsp;    private boolean setWay(int[][] mapArray, int startx, int starty, int[] end) {
+<b class="nc">&nbsp;        if (mapArray[end[0]][end[1]] == 2) {</b>
+<b class="nc">&nbsp;            return true;</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            if (mapArray[startx][starty] == 0) {//如果当前点还没有走过</b>
+&nbsp;                //按照策略走 下 右 上 左
+<b class="nc">&nbsp;                mapArray[startx][starty] = 2;//假定该店可以走通</b>
+<b class="nc">&nbsp;                if (setWay(mapArray, startx, starty + 1, end)) {//先向右走</b>
+<b class="nc">&nbsp;                    return true;</b>
+<b class="nc">&nbsp;                } else if (setWay(mapArray, startx + 1, starty, end)) { // 向下</b>
+<b class="nc">&nbsp;                    return true;</b>
+<b class="nc">&nbsp;                } else if (setWay(mapArray, startx - 1, starty, end)) { // 向上</b>
+<b class="nc">&nbsp;                    return true;</b>
+<b class="nc">&nbsp;                } else if (setWay(mapArray, startx, starty - 1, end)) {// 向左</b>
+<b class="nc">&nbsp;                    return true;</b>
+&nbsp;                } else {
+<b class="nc">&nbsp;                    mapArray[startx][starty] = 3;//说明该点是走不通的</b>
+<b class="nc">&nbsp;                    return false;</b>
+&nbsp;                }
+&nbsp;            } else {
+<b class="nc">&nbsp;                return false;</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-25 09:00</div>
+</div>
+</body>
+</html>

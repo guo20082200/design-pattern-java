@@ -1,0 +1,140 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Computer</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zishi.pattern.creational.builder02</a>
+</div>
+
+<h1>Coverage Summary for Class: Computer (com.zishi.pattern.creational.builder02)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Computer</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zishi.pattern.creational.builder02;
+&nbsp;
+&nbsp;public class Computer {
+&nbsp;    private String cpu;//必须
+&nbsp;    private String ram;//必须
+&nbsp;    private int usbCount;//可选
+&nbsp;    private String keyboard;//可选
+&nbsp;    private String display;//可选
+&nbsp;
+<b class="nc">&nbsp;    public Computer(String cpu, String ram) {</b>
+<b class="nc">&nbsp;        this.cpu = cpu;</b>
+<b class="nc">&nbsp;        this.ram = ram;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setUsbCount(int usbCount) {
+<b class="nc">&nbsp;        this.usbCount = usbCount;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setKeyboard(String keyboard) {
+<b class="nc">&nbsp;        this.keyboard = keyboard;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDisplay(String display) {
+<b class="nc">&nbsp;        this.display = display;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;Computer{&quot; +</b>
+&nbsp;                &quot;cpu=&#39;&quot; + cpu + &#39;\&#39;&#39; +
+&nbsp;                &quot;, ram=&#39;&quot; + ram + &#39;\&#39;&#39; +
+&nbsp;                &quot;, usbCount=&quot; + usbCount +
+&nbsp;                &quot;, keyboard=&#39;&quot; + keyboard + &#39;\&#39;&#39; +
+&nbsp;                &quot;, display=&#39;&quot; + display + &#39;\&#39;&#39; +
+&nbsp;                &#39;}&#39;;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-25 09:00</div>
+</div>
+</body>
+</html>

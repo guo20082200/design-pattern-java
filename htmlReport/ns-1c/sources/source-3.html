@@ -1,0 +1,152 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > User</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zishi.pattern.creational.prototype</a>
+</div>
+
+<h1>Coverage Summary for Class: User (com.zishi.pattern.creational.prototype)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">User</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zishi.pattern.creational.prototype;
+&nbsp;
+&nbsp;import java.io.Serializable;
+&nbsp;import java.util.Date;
+&nbsp;
+&nbsp;/**
+&nbsp; * 原型类：被克隆的类型
+&nbsp; *
+&nbsp; * @author zishi
+&nbsp; */
+<b class="nc">&nbsp;public class User implements Cloneable, Serializable {</b>
+&nbsp;
+&nbsp;    private String name;
+&nbsp;
+&nbsp;    private Date birth;
+&nbsp;
+&nbsp;    private int age;
+&nbsp;
+&nbsp;    public String getName() {
+<b class="nc">&nbsp;        return name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setName(String name) {
+<b class="nc">&nbsp;        this.name = name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Date getBirth() {
+<b class="nc">&nbsp;        return birth;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setBirth(Date birth) {
+<b class="nc">&nbsp;        this.birth = birth;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getAge() {
+<b class="nc">&nbsp;        return age;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setAge(int age) {
+<b class="nc">&nbsp;        this.age = age;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 实现克隆的方法
+&nbsp;     */
+&nbsp;    public Object clone() throws CloneNotSupportedException {
+<b class="nc">&nbsp;        return super.clone();</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-25 09:00</div>
+</div>
+</body>
+</html>

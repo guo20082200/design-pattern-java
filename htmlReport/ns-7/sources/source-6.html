@@ -1,0 +1,153 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SelectSorting</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zishi.algorithm.a05_sort</a>
+</div>
+
+<h1>Coverage Summary for Class: SelectSorting (com.zishi.algorithm.a05_sort)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SelectSorting</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/18)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zishi.algorithm.a05_sort;
+&nbsp;
+&nbsp;/**
+&nbsp; * 基本介绍
+&nbsp; * 选择式排序也属于内部排序法，是从欲排序的数据中，按指定的规则选出某一元素，再依规定交换位置后达到排序的目的
+&nbsp; * &lt;p&gt;
+&nbsp; * 基本思想
+&nbsp; * 选择排序（select sorting）也是一种简单的排序方法。它的基本思想是：
+&nbsp; * 第一次从 arr[0]~arr[n-1]中选取最小值， 与 arr[0]交换，
+&nbsp; * 第二次从 arr[1]~arr[n-1]中选取最小值，与 arr[1]交换，
+&nbsp; * 第三次从 arr[2]~arr[n-1]中选取最小值，与 arr[2] 交换，…，
+&nbsp; * 第 i 次从 arr[i-1]~arr[n-1]中选取最小值，与 arr[i-1]交换，…,
+&nbsp; * 第 n-1 次从 arr[n-2]~arr[n-1]中选取最小值， 与 arr[n-2]交换，
+&nbsp; * 总共通过 n-1 次，得到一个按排序码从小到大排列的有序序列。
+&nbsp; */
+<b class="nc">&nbsp;public class SelectSorting {</b>
+&nbsp;
+&nbsp;    public static void main(String[] args) {
+<b class="nc">&nbsp;        int[] arr = new int[80000];</b>
+<b class="nc">&nbsp;        for (int i = 0; i &lt; arr.length; i++) {</b>
+<b class="nc">&nbsp;            arr[i] = (int) (Math.random() * (arr.length * 100));</b>
+&nbsp;        }
+<b class="nc">&nbsp;        long start = System.currentTimeMillis();</b>
+<b class="nc">&nbsp;        selectSort(arr);</b>
+<b class="nc">&nbsp;        long end = System.currentTimeMillis();</b>
+<b class="nc">&nbsp;        System.out.println(&quot;排序后的时间：&quot; + (end - start));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //选择排序
+&nbsp;    public static void selectSort(int[] arr) {
+&nbsp;        //使用逐步推导的方式来，讲解选择排序
+<b class="nc">&nbsp;        for (int i = 0; i &lt; arr.length - 1; i++) {</b>
+<b class="nc">&nbsp;            int minIndex = i;//假定最小数的索引</b>
+<b class="nc">&nbsp;            int min = arr[minIndex];//假定最小数的值</b>
+<b class="nc">&nbsp;            for (int j = i + 1; j &lt; arr.length; j++) {</b>
+<b class="nc">&nbsp;                if (min &gt; arr[j]) {//说明这个最小值并不是最小</b>
+<b class="nc">&nbsp;                    min = arr[j];</b>
+<b class="nc">&nbsp;                    minIndex = j;</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;            //交换
+&nbsp;            //多一个判断条件
+<b class="nc">&nbsp;            if (minIndex != i) {</b>
+<b class="nc">&nbsp;                arr[minIndex] = arr[i];</b>
+<b class="nc">&nbsp;                arr[i] = min;</b>
+&nbsp;            }
+&nbsp;            //System.out.println(Arrays.toString(arr));
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-25 09:00</div>
+</div>
+</body>
+</html>

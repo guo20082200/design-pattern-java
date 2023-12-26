@@ -1,0 +1,174 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ShellSort</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zishi.algorithm.a05_sort</a>
+</div>
+
+<h1>Coverage Summary for Class: ShellSort (com.zishi.algorithm.a05_sort)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ShellSort</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/24)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zishi.algorithm.a05_sort;
+&nbsp;
+&nbsp;import java.util.Arrays;
+&nbsp;
+&nbsp;/**
+&nbsp; * 插入排序的缺点： 当需要插入的数是较小的数时，后移的次数明显增多，对效率有影响.
+&nbsp; * 介绍
+&nbsp; * 希尔排序是希尔（Donald Shell）于1959年提出的一种排序算法。希尔排序也是一种插入排序，它是简单插入排序经过改进之后的一个更高效的版本，也称为缩小增量排序。
+&nbsp; * &lt;p&gt;
+&nbsp; * 基本思想
+&nbsp; * 希尔排序是把记录按下标的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，算法便终止
+&nbsp; */
+<b class="nc">&nbsp;public class ShellSort {</b>
+&nbsp;
+&nbsp;    public static void main(String[] args) {
+<b class="nc">&nbsp;        int[] arr = new int[8000000];</b>
+<b class="nc">&nbsp;        for (int i = 0; i &lt; arr.length; i++) {</b>
+<b class="nc">&nbsp;            arr[i] = (int) (Math.random() * (arr.length * 100));</b>
+&nbsp;        }
+<b class="nc">&nbsp;        long start = System.currentTimeMillis();</b>
+&nbsp;        // shellSort(arr); // 5313ms
+<b class="nc">&nbsp;        shellSort2(arr); // 1726ms</b>
+<b class="nc">&nbsp;        long end = System.currentTimeMillis();</b>
+<b class="nc">&nbsp;        System.out.println(&quot;排序后的时间：&quot; + (end - start));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * shell排序交换法
+&nbsp;     *
+&nbsp;     * @param arr
+&nbsp;     */
+&nbsp;    public static void shellSort(int[] arr) {
+<b class="nc">&nbsp;        for (int gap = arr.length / 2; gap &gt; 0; gap /= 2) {//确定每一次的步长</b>
+<b class="nc">&nbsp;            for (int i = gap; i &lt; arr.length; i++) {</b>
+<b class="nc">&nbsp;                for (int j = i - gap; j &gt;= 0; j -= gap) {</b>
+<b class="nc">&nbsp;                    if (arr[j] &gt; arr[j + gap]) {</b>
+<b class="nc">&nbsp;                        int temp = arr[j];</b>
+<b class="nc">&nbsp;                        arr[j] = arr[j + gap];</b>
+<b class="nc">&nbsp;                        arr[j + gap] = temp;</b>
+&nbsp;                    }
+&nbsp;                }
+&nbsp;            }
+&nbsp;            // System.out.println(Arrays.toString(arr));
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * shell排序移位法，局部的插入排序
+&nbsp;     *
+&nbsp;     * @param arr
+&nbsp;     */
+&nbsp;    public static void shellSort2(int[] arr) {
+<b class="nc">&nbsp;        for (int gap = arr.length / 2; gap &gt; 0; gap /= 2) {//确定每一次的步长</b>
+&nbsp;            //从第gap个元素，逐个对其所在的组进行直接插入排序
+<b class="nc">&nbsp;            for (int i = gap; i &lt; arr.length; i++) {</b>
+<b class="nc">&nbsp;                int j = i;</b>
+<b class="nc">&nbsp;                int temp = arr[j];</b>
+<b class="nc">&nbsp;                if (arr[j] &lt; arr[j - gap]) {</b>
+<b class="nc">&nbsp;                    while (j - gap &gt;= 0 &amp;&amp; temp &lt; arr[j - gap]) {</b>
+&nbsp;                        //移动
+<b class="nc">&nbsp;                        arr[j] = arr[j - gap];</b>
+<b class="nc">&nbsp;                        j -= gap;</b>
+&nbsp;                    }
+&nbsp;                    //退出循环，找到位置
+<b class="nc">&nbsp;                    arr[j] = temp;</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;            // System.out.println(Arrays.toString(arr));
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-25 09:00</div>
+</div>
+</body>
+</html>

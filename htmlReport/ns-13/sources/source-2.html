@@ -1,0 +1,122 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ObserverClient</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zishi.pattern.behavioral.observer</a>
+</div>
+
+<h1>Coverage Summary for Class: ObserverClient (com.zishi.pattern.behavioral.observer)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ObserverClient</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/13)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zishi.pattern.behavioral.observer;
+&nbsp;
+<b class="nc">&nbsp;public class ObserverClient {</b>
+&nbsp;    public static void main(String[] args) {
+<b class="nc">&nbsp;        GreenTeaBitchSubject subject = new ShangGuanSubject();</b>
+<b class="nc">&nbsp;        Dog2WangObserver dog2WangObserver = new Dog2WangObserver();</b>
+<b class="nc">&nbsp;        subject.add(dog2WangObserver);</b>
+<b class="nc">&nbsp;        subject.add(new YinDangObserver());</b>
+&nbsp;
+<b class="nc">&nbsp;        System.out.println(&quot;------午夜12点，肚子好饿，找个人来买东西吃------&quot;);</b>
+<b class="nc">&nbsp;        subject.notifyState(&quot;肚子好饿&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;------又被渣男甩了，有点小难过，找个人来安慰一下------&quot;);</b>
+<b class="nc">&nbsp;        subject.notifyState(&quot;心情不好&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;------二狗终于看透了上官这个绿茶婊，和牛翠花走到了一起------&quot;);</b>
+<b class="nc">&nbsp;        subject.remove(dog2WangObserver);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;------上官又被渣男甩了，想找个人来安慰一下，却不见了那个好人的身影------&quot;);</b>
+<b class="nc">&nbsp;        subject.notifyState(&quot;心情不好&quot;);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-25 09:00</div>
+</div>
+</body>
+</html>

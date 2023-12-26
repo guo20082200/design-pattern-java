@@ -1,0 +1,299 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > HeroNode2</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zishi.algorithm.a02_queue</a>
+</div>
+
+<h1>Coverage Summary for Class: HeroNode2 (com.zishi.algorithm.a02_queue)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">HeroNode2</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zishi.algorithm.a02_queue;
+&nbsp;
+&nbsp;public class DoubleLinkedListDemo {
+&nbsp;    public static void main(String[] args) {
+&nbsp;        //测试
+&nbsp;        HeroNode2 heroNode1 = new HeroNode2(1, &quot;11&quot;, &quot;111&quot;);
+&nbsp;        HeroNode2 heroNode2 = new HeroNode2(2, &quot;22&quot;, &quot;222&quot;);
+&nbsp;        HeroNode2 heroNode3 = new HeroNode2(3, &quot;33&quot;, &quot;333&quot;);
+&nbsp;        HeroNode2 heroNode4 = new HeroNode2(4, &quot;44&quot;, &quot;444&quot;);
+&nbsp;        HeroNode2 heroNode5 = new HeroNode2(2, &quot;22222&quot;, &quot;22222222&quot;);
+&nbsp;        //创建一个链表
+&nbsp;        DoubleLinkedList doubleLinkedList = new DoubleLinkedList();
+&nbsp;
+&nbsp;        //add数据
+&nbsp;        doubleLinkedList.addHeroByOrder(heroNode1);
+&nbsp;        doubleLinkedList.addHeroByOrder(heroNode4);
+&nbsp;        doubleLinkedList.addHeroByOrder(heroNode3);
+&nbsp;        doubleLinkedList.addHeroByOrder(heroNode2);
+&nbsp;
+&nbsp;        //显示链表
+&nbsp;        doubleLinkedList.showLinkedList();
+&nbsp;
+&nbsp;        doubleLinkedList.update(heroNode5);
+&nbsp;//        //delete数据
+&nbsp;//        doubleLinkedList.delete(3);
+&nbsp;        System.out.println(&quot;================================&quot;);
+&nbsp;        System.out.println(heroNode4.pre.pre);
+&nbsp;    }
+&nbsp;}
+&nbsp;
+&nbsp;class DoubleLinkedList {
+&nbsp;    //初始化头节点
+&nbsp;    private HeroNode2 head = new HeroNode2(0, &quot;&quot;, &quot;&quot;);
+&nbsp;
+&nbsp;    //返回头节点
+&nbsp;    public HeroNode2 getHead() {
+&nbsp;        return head;
+&nbsp;    }
+&nbsp;
+&nbsp;    //遍历双向链表
+&nbsp;    //显示链表【遍历】
+&nbsp;    public void showLinkedList() {
+&nbsp;        //判断链表是否为空
+&nbsp;        if (head.next == null) {
+&nbsp;            System.out.println(&quot;链表为空！&quot;);
+&nbsp;            return;
+&nbsp;        }
+&nbsp;        //因为头节点不能动，因此我们需要一个辅助变量来遍历
+&nbsp;        HeroNode2 temp = head.next;
+&nbsp;        while (true) {
+&nbsp;            //判断是否到链表最后
+&nbsp;            if (temp == null) {
+&nbsp;                break;
+&nbsp;            }
+&nbsp;            //输出节点信息
+&nbsp;            System.out.println(temp);
+&nbsp;            //将next后移，不后移就是个死循环
+&nbsp;            temp = temp.next;
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    //添加节点到双向链表
+&nbsp;    //当不考虑编号顺序时
+&nbsp;    //1.找到当前链表的最后节点
+&nbsp;    //2.将最后这个节点的next指向新的节点
+&nbsp;    public void add(HeroNode2 heroNode) {
+&nbsp;
+&nbsp;        //因为head节点不能动，因此我们需要一个辅助变量 temp
+&nbsp;        HeroNode2 temp = head;
+&nbsp;        //遍历链表，找到最后
+&nbsp;        while (true) {
+&nbsp;            //当next == null时,找到链表最后
+&nbsp;            if (temp.next == null) {
+&nbsp;                break;
+&nbsp;            }
+&nbsp;            //如果没有找到最后,将temp后移一位
+&nbsp;            temp = temp.next;
+&nbsp;        }
+&nbsp;        //当退出while循环时，temp就指向了链表的最后
+&nbsp;        //将最后这个节点的next指向新的节点
+&nbsp;        temp.next = heroNode;
+&nbsp;        //形成双向链表
+&nbsp;        heroNode.pre = temp;
+&nbsp;    }
+&nbsp;
+&nbsp;    //--------------------------------------------------------
+&nbsp;    //添加指定位置 双向链表
+&nbsp;    public void addHeroByOrder(HeroNode2 heroNode) {
+&nbsp;        boolean flag = false;
+&nbsp;        HeroNode2 temp = head;
+&nbsp;        while (true) {
+&nbsp;            if (temp.next == null) {
+&nbsp;                break;
+&nbsp;            }
+&nbsp;            if (temp.next.no &gt; heroNode.no) {
+&nbsp;                break;
+&nbsp;            } else if (temp.next.no == heroNode.no) {
+&nbsp;                flag = true;
+&nbsp;                break;
+&nbsp;            }
+&nbsp;            temp = temp.next;
+&nbsp;        }
+&nbsp;        if (flag) {
+&nbsp;            System.out.printf(&quot;编号%d已经存在&quot;, heroNode.no);
+&nbsp;        } else {
+&nbsp;            heroNode.next = temp.next;
+&nbsp;            temp.next = heroNode;
+&nbsp;            heroNode.pre = temp;
+&nbsp;            //判断下一个节点是否有没有数据，如果有数据就把pre指向上一个节点，如果没有就跳过，如果不判断会报空指针异常。
+&nbsp;            if (heroNode.next != null) {
+&nbsp;                heroNode.next.pre = heroNode;
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;//======================================================
+&nbsp;
+&nbsp;    //更新节点数据 和单向链表一样。
+&nbsp;    public void update(HeroNode2 updateHero) {
+&nbsp;        HeroNode2 temp = head;
+&nbsp;        boolean flag = false;
+&nbsp;        while (true) {
+&nbsp;            if (temp.next == null) {
+&nbsp;                break;
+&nbsp;            }
+&nbsp;            if (temp.next.no == updateHero.no) {
+&nbsp;                //修改
+&nbsp;                flag = true;
+&nbsp;                break;
+&nbsp;            }
+&nbsp;
+&nbsp;            temp = temp.next;
+&nbsp;        }
+&nbsp;        if (flag) {
+&nbsp;            temp.next.name = updateHero.name;
+&nbsp;            temp.next.nickname = updateHero.nickname;
+&nbsp;        } else {
+&nbsp;            System.out.printf(&quot;没有找到%d编号的节点\n&quot;, updateHero.no);
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    //删除节点
+&nbsp;    public void delete(int no) {
+&nbsp;        if (head.next == null) {
+&nbsp;            System.out.println(&quot;链表为空！&quot;);
+&nbsp;            return;
+&nbsp;        }
+&nbsp;        HeroNode2 temp = head.next;
+&nbsp;        boolean flag = false;
+&nbsp;        while (true) {
+&nbsp;            if (temp == null) {
+&nbsp;                break;
+&nbsp;            }
+&nbsp;            if (temp.no == no) {
+&nbsp;                flag = true;
+&nbsp;                break;
+&nbsp;            }
+&nbsp;            temp = temp.next;
+&nbsp;        }
+&nbsp;        if (flag) {
+&nbsp;            temp.pre.next = temp.next;
+&nbsp;            if (temp.next != null) { // 判断是否为最后一个节点
+&nbsp;                temp.next.pre = temp.pre;
+&nbsp;            }
+&nbsp;        } else {
+&nbsp;            System.out.printf(&quot;要删除的编号%d节点不存在&quot;, no);
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+&nbsp;
+&nbsp;
+&nbsp;//定义HeroNode2 ， 每个HeroNode对象就是一个节点
+&nbsp;class HeroNode2 {
+&nbsp;    public int no;
+&nbsp;    public String name;
+&nbsp;    public String nickname;
+&nbsp;    public HeroNode2 next; //指向下一个节点 默认为null
+&nbsp;    public HeroNode2 pre; //指向上一个节点 默认为null
+&nbsp;
+&nbsp;    //构造器
+<b class="nc">&nbsp;    public HeroNode2(int no, String name, String nickname) {</b>
+<b class="nc">&nbsp;        this.no = no;</b>
+<b class="nc">&nbsp;        this.name = name;</b>
+<b class="nc">&nbsp;        this.nickname = nickname;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //重写ToString
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;HeroNode{&quot; +</b>
+&nbsp;                &quot;no=&quot; + no +
+&nbsp;                &quot;, name=&#39;&quot; + name + &#39;\&#39;&#39; +
+&nbsp;                &quot;, nickname=&#39;&quot; + nickname + &#39;\&#39;&#39; +
+&nbsp;                &#39;}&#39;;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-25 09:00</div>
+</div>
+</body>
+</html>

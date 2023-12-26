@@ -1,0 +1,136 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > LivePlay</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zishi.pattern.behavioral.template</a>
+</div>
+
+<h1>Coverage Summary for Class: LivePlay (com.zishi.pattern.behavioral.template)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LivePlay</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/9)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zishi.pattern.behavioral.template;
+&nbsp;
+<b class="nc">&nbsp;public abstract class LivePlay {</b>
+&nbsp;    //模板方法
+&nbsp;    public final void seeLivePlay() {
+<b class="nc">&nbsp;        login();</b>
+<b class="nc">&nbsp;        openRoom();</b>
+<b class="nc">&nbsp;        startAudioAndVideoStream();</b>
+<b class="nc">&nbsp;        pushVideoStream();</b>
+<b class="nc">&nbsp;        stopAudioAndVideoStream();</b>
+<b class="nc">&nbsp;        closeRoom();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //实体方法，这个方法实现通用的业务逻辑
+&nbsp;    private void login() {
+<b class="nc">&nbsp;        System.out.println(&quot;用户登录&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /*抽象方法*/
+&nbsp;    //打开房间
+&nbsp;    public abstract void openRoom();
+&nbsp;    //打开音视频流
+&nbsp;    public abstract void startAudioAndVideoStream();
+&nbsp;    //关闭音视频流
+&nbsp;    public abstract void stopAudioAndVideoStream();
+&nbsp;    //关闭房间
+&nbsp;    public abstract void closeRoom();
+&nbsp;
+&nbsp;    /*钩子方法，可以被需要的子类overwrite*/
+&nbsp;    //旁路推流，可以通过视频链接在浏览器中查看视频
+&nbsp;    public void pushVideoStream() {
+<b class="nc">&nbsp;    }</b>
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-25 09:00</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ProtoTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zishi.pattern.creational.prototype</a>
+</div>
+
+<h1>Coverage Summary for Class: ProtoTest (com.zishi.pattern.creational.prototype)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ProtoTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/20)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zishi.pattern.creational.prototype;
+&nbsp;
+&nbsp;import java.util.Date;
+&nbsp;
+&nbsp;/**
+&nbsp; * 浅克隆的问题:虽然产生了两个完全不同的对象，但是被复制的对象的所有变量都含有与原来的对象相同的值，而所有的对其他对象的引用都仍然指向原来的对象。
+&nbsp; */
+<b class="nc">&nbsp;public class ProtoTest {</b>
+&nbsp;
+&nbsp;    public static void main(String[] args) throws CloneNotSupportedException {
+<b class="nc">&nbsp;        Date date = new Date(1231231231231L);</b>
+<b class="nc">&nbsp;        User user = new User();</b>
+<b class="nc">&nbsp;        System.out.println(user.hashCode());</b>
+<b class="nc">&nbsp;        user.setName(&quot;波波烤鸭&quot;);</b>
+<b class="nc">&nbsp;        user.setAge(18);</b>
+<b class="nc">&nbsp;        user.setBirth(date);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;----输出原型对象的属性------&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(user);</b>
+<b class="nc">&nbsp;        System.out.println(user.getName());</b>
+<b class="nc">&nbsp;        System.out.println(user.getBirth());</b>
+&nbsp;        // 克隆对象
+<b class="nc">&nbsp;        User user1 = (User) user.clone();</b>
+<b class="nc">&nbsp;        System.out.println(user1.hashCode());</b>
+&nbsp;        // 修改原型对象中的属性
+<b class="nc">&nbsp;        date.setTime(123231231231L);</b>
+<b class="nc">&nbsp;        System.out.println(user.getBirth());</b>
+&nbsp;
+&nbsp;        // 修改参数
+<b class="nc">&nbsp;        user1.setName(&quot;dpb&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;-------克隆对象的属性-----&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(user1);</b>
+<b class="nc">&nbsp;        System.out.println(user1.getName());</b>
+<b class="nc">&nbsp;        System.out.println(user1.getBirth());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-25 09:00</div>
+</div>
+</body>
+</html>

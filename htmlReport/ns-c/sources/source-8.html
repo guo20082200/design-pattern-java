@@ -1,0 +1,166 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SampleLoader</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zishi.assist</a>
+</div>
+
+<h1>Coverage Summary for Class: SampleLoader (com.zishi.assist)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SampleLoader</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/12)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zishi.assist;
+&nbsp;
+&nbsp;import javassist.*;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;/**
+&nbsp; *
+&nbsp; * 一个简单的使用Javassist的类加载器
+&nbsp; *
+&nbsp; * 类MyApp是一个应用程序，为了执行该程序，将该类的字节码放到  ./class 目录下，这个路径不能被搜索路径包括
+&nbsp; * 否则，MyApp.class将会被默认的系统类加载器（是SampleLoader的父类加载器）加载
+&nbsp; *
+&nbsp; * ./class 这个目录的名称是构造方法里面的insertClassPath()方法指定的，你可以自行修改这个目录的名称
+&nbsp; *
+&nbsp; * 然后命令行执行：% java SampleLoader
+&nbsp; *
+&nbsp; * 这个类加载器就会加载  MyApp（./class/MyApp.class），然后调用MyApp.main()方法（伴随着命令行的参数），
+&nbsp; *
+&nbsp; *
+&nbsp; * 这是最简单的使用Javassist加载器的方式，然而，如果你想写一个更加复杂的类加载器，你可能需要详细的类加载机制的知识
+&nbsp; * 例如：
+&nbsp; * 因为MyApp 类的加载和SampleLoader类加载使用了不同的类加载器，那么
+&nbsp; * 这个程序将MyApp类所属的命名空间和SampleLoader所属的命名空间是完全独立的
+&nbsp; * 因此：MyApp类不能直接访问SampleLoader
+&nbsp; *
+&nbsp; */
+&nbsp;public class SampleLoader extends ClassLoader {
+&nbsp;    /* Call MyApp.main().
+&nbsp;     */
+&nbsp;    public static void main(String[] args) throws Throwable {
+<b class="nc">&nbsp;        SampleLoader s = new SampleLoader();</b>
+<b class="nc">&nbsp;        Class c = s.loadClass(&quot;MyApp&quot;);</b>
+<b class="nc">&nbsp;        c.getDeclaredMethod(&quot;main&quot;, new Class[] { String[].class })</b>
+<b class="nc">&nbsp;         .invoke(null, new Object[] { args });</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private ClassPool pool;
+&nbsp;
+<b class="nc">&nbsp;    public SampleLoader() throws NotFoundException {</b>
+<b class="nc">&nbsp;        pool = new ClassPool();</b>
+<b class="nc">&nbsp;        pool.insertClassPath(&quot;./class&quot;); // MyApp.class must be there.</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /* Finds a specified class.
+&nbsp;     * The bytecode for that class can be modified.
+&nbsp;     */
+&nbsp;    protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException {
+&nbsp;        try {
+<b class="nc">&nbsp;            CtClass cc = pool.get(name);</b>
+&nbsp;            // modify the CtClass object here
+<b class="nc">&nbsp;            byte[] b = cc.toBytecode();</b>
+<b class="nc">&nbsp;            return defineClass(name, b, 0, b.length);</b>
+<b class="nc">&nbsp;        } catch (NotFoundException | IOException | CannotCompileException e) {</b>
+<b class="nc">&nbsp;            throw new ClassNotFoundException();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-25 09:00</div>
+</div>
+</body>
+</html>

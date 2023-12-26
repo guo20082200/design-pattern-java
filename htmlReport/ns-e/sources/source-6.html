@@ -1,0 +1,148 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > StudentTrace</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zishi.jvm</a>
+</div>
+
+<h1>Coverage Summary for Class: StudentTrace (com.zishi.jvm)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">StudentTrace</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/20)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zishi.jvm;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;/**
+&nbsp; * 有一个学生浏览网页的记录程序，它将记录 每个学生访问过的网站地址。
+&nbsp; * 它由三个部分组成：Student、WebPage和StudentTrace三个类
+&nbsp; * -XX:+HeapDumpBeforeFullGC -XX:HeapDumpPath=c:\code\student.hprof
+&nbsp; */
+<b class="nc">&nbsp;public class StudentTrace {</b>
+<b class="nc">&nbsp;    static List&lt;WebPage&gt; webpages = new ArrayList&lt;WebPage&gt;();</b>
+&nbsp;
+&nbsp;    public static void createWebPages() {
+<b class="nc">&nbsp;        for (int i = 0; i &lt; 100; i++) {</b>
+<b class="nc">&nbsp;            WebPage wp = new WebPage();</b>
+<b class="nc">&nbsp;            wp.setUrl(&quot;http://www. &quot; + (i + 1) + &quot; .com&quot;);</b>
+<b class="nc">&nbsp;            wp.setContent(Integer.toString(i));</b>
+<b class="nc">&nbsp;            webpages.add(wp);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void main(String[] args) {
+<b class="nc">&nbsp;        createWebPages();//创建了100个网页</b>
+&nbsp;        //创建3个学生对象
+<b class="nc">&nbsp;        Student st3 = new Student(3, &quot;Tom&quot;);</b>
+<b class="nc">&nbsp;        Student st5 = new Student(5, &quot;Jerry&quot;);</b>
+<b class="nc">&nbsp;        Student st7 = new Student(7, &quot;Lily&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        for (int i = 0; i &lt; webpages.size(); i++) {</b>
+<b class="nc">&nbsp;            if (i % st3.getId() == 0)</b>
+<b class="nc">&nbsp;                st3.visit(webpages.get(i));</b>
+<b class="nc">&nbsp;            if (i % st5.getId() == 0)</b>
+<b class="nc">&nbsp;                st5.visit(webpages.get(i));</b>
+<b class="nc">&nbsp;            if (i % st7.getId() == 0)</b>
+<b class="nc">&nbsp;                st7.visit(webpages.get(i));</b>
+&nbsp;        }
+<b class="nc">&nbsp;        webpages.clear();</b>
+<b class="nc">&nbsp;        System.gc();</b>
+&nbsp;    }
+&nbsp;}
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-25 09:00</div>
+</div>
+</body>
+</html>

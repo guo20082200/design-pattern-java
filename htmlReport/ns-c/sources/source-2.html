@@ -1,0 +1,131 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > AR02</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zishi.assist</a>
+</div>
+
+<h1>Coverage Summary for Class: AR02 (com.zishi.assist)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AR02</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/11)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zishi.assist;
+&nbsp;
+&nbsp;import javassist.ClassPool;
+&nbsp;import javassist.CtClass;
+&nbsp;
+&nbsp;import java.lang.reflect.Method;
+&nbsp;
+<b class="nc">&nbsp;public class AR02 {</b>
+&nbsp;
+&nbsp;    public static void main(String[] args) throws Exception {
+<b class="nc">&nbsp;        ClassPool pool = ClassPool.getDefault();</b>
+<b class="nc">&nbsp;        pool.appendClassPath(&quot;D:\\my-learn\\design-pattern-java\\src\\main\\java\\&quot;);</b>
+<b class="nc">&nbsp;        pool.insertClassPath(&quot;C:\\Users\\zishi\\Desktop\\arthas\\&quot;);</b>
+&nbsp;
+&nbsp;        // 获取接口
+<b class="nc">&nbsp;        CtClass codeClassI = pool.get(&quot;com.zishi.assist.PersonI&quot;);</b>
+&nbsp;        // 获取上面生成的类
+<b class="nc">&nbsp;        CtClass ctClass = pool.get(&quot;com.rickiyang.learn.javassist.Person&quot;);</b>
+&nbsp;        // 使代码生成的类，实现 PersonI 接口
+<b class="nc">&nbsp;        ctClass.setInterfaces(new CtClass[]{codeClassI});</b>
+&nbsp;
+&nbsp;        // 以下通过接口直接调用 强转
+<b class="nc">&nbsp;        PersonI person = (PersonI)ctClass.toClass().newInstance();</b>
+<b class="nc">&nbsp;        System.out.println(person.getName());</b>
+<b class="nc">&nbsp;        person.setName(&quot;xiaolv&quot;);</b>
+<b class="nc">&nbsp;        person.printName();</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-25 09:00</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,245 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > BinaryTree</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zishi.algorithm.a07_tree.shunxu</a>
+</div>
+
+<h1>Coverage Summary for Class: BinaryTree (com.zishi.algorithm.a07_tree.shunxu)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BinaryTree</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/50)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zishi.algorithm.a07_tree.shunxu;
+&nbsp;
+&nbsp;import java.util.Scanner;
+&nbsp;
+&nbsp;
+&nbsp;public class BinaryTree {
+<b class="nc">&nbsp;    final private int DEFAULT_PEEK = 6;</b>
+&nbsp;    private int deep;
+&nbsp;    private int length;
+&nbsp;    private String[] array;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 无参构造器
+&nbsp;     */
+<b class="nc">&nbsp;    public BinaryTree() {</b>
+<b class="nc">&nbsp;        this.deep = DEFAULT_PEEK;</b>
+<b class="nc">&nbsp;        this.length = (int) (Math.pow(2, deep) - 1);</b>
+<b class="nc">&nbsp;        array = new String[length];</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 传入深度参数的构造器
+&nbsp;     */
+<b class="nc">&nbsp;    public BinaryTree(int deep) {</b>
+<b class="nc">&nbsp;        this.deep = deep;</b>
+<b class="nc">&nbsp;        this.length = (int) (Math.pow(2, deep) - 1);</b>
+<b class="nc">&nbsp;        array = new String[length];</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 传入参数深度和根结点的构造器
+&nbsp;     */
+<b class="nc">&nbsp;    public BinaryTree(int deep, String data) {</b>
+<b class="nc">&nbsp;        this.deep = deep;</b>
+<b class="nc">&nbsp;        this.length = (int) (Math.pow(2, deep) - 1);</b>
+<b class="nc">&nbsp;        array = new String[length];</b>
+<b class="nc">&nbsp;        array[1] = data;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 添加初始化结点
+&nbsp;     */
+&nbsp;    public void addNode() {
+<b class="nc">&nbsp;        Scanner input = new Scanner(System.in);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;请输入二叉树信息，输入值为0结束输入&quot;);</b>
+<b class="nc">&nbsp;        for (int i = 1; i &lt; array.length; i++) {</b>
+<b class="nc">&nbsp;            if (array[i] == null || array[i].equals(&quot;0&quot;) == true) {</b>
+<b class="nc">&nbsp;                array[i] = input.nextLine();</b>
+<b class="nc">&nbsp;                if (array[i].equals(&quot;0&quot;) == true) {</b>
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 判断二叉树是否为空
+&nbsp;     */
+&nbsp;    public boolean isEmpaty() {
+<b class="nc">&nbsp;        if (array[1] != null &amp;&amp; array[1].equals(&quot;0&quot;) != true) {</b>
+<b class="nc">&nbsp;            return false;</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            return true;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 返回指定结点的值
+&nbsp;     */
+&nbsp;    public String returnData(int index) {
+<b class="nc">&nbsp;        if (index &lt; 1 || index &gt; array.length - 1) {</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            return array[index];</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 返回指定结点的父节点
+&nbsp;     */
+&nbsp;    public String getParent(int index) {
+<b class="nc">&nbsp;        if (index &lt; 1 || index &gt; array.length - 1) {</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            return array[index / 2];</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 添加指定结点的左节点
+&nbsp;     */
+&nbsp;    public void addNodeLeft(int index, String data) {
+<b class="nc">&nbsp;        if (array[2 * index] != null &amp;&amp; array[2 * index].equals(&quot;0&quot;) != true) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;当前结点左节点已有值，是否覆盖？Y/N&quot;);</b>
+<b class="nc">&nbsp;            Scanner input = new Scanner(System.in);</b>
+<b class="nc">&nbsp;            String in = input.nextLine();</b>
+<b class="nc">&nbsp;            if (in.equals(&quot;Y&quot;)) {</b>
+<b class="nc">&nbsp;                array[index * 2] = data;</b>
+<b class="nc">&nbsp;            } else if (in.equals(&quot;N&quot;)) {</b>
+&nbsp;                return;
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 添加指定结点的左节点
+&nbsp;     */
+&nbsp;    public void addNodeRight(int index, String data) {
+<b class="nc">&nbsp;        if (array[2 * index + 1] != null &amp;&amp; array[2 * index + 1].equals(&quot;0&quot;) != true) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;当前结点右节点已有值，是否覆盖？Y/N&quot;);</b>
+<b class="nc">&nbsp;            Scanner input = new Scanner(System.in);</b>
+<b class="nc">&nbsp;            String in = input.nextLine();</b>
+<b class="nc">&nbsp;            if (in.equals(&quot;Y&quot;)) {</b>
+<b class="nc">&nbsp;                array[index * 2 + 1] = data;</b>
+<b class="nc">&nbsp;            } else if (in.equals(&quot;N&quot;)) {</b>
+&nbsp;                return;
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 返回指定结点的左节点
+&nbsp;     */
+&nbsp;    public String getLeftNode(int index) {
+<b class="nc">&nbsp;        if (array[2 * index] != null &amp;&amp; array[2 * index].equals(&quot;0&quot;) != true) {</b>
+<b class="nc">&nbsp;            return array[index * 2];</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 返回指定结点的右节点
+&nbsp;     */
+&nbsp;    public String getRightNode(int index) {
+<b class="nc">&nbsp;        if (array[2 * index + 1] != null &amp;&amp; array[2 * index + 1].equals(&quot;0&quot;) != true) {</b>
+<b class="nc">&nbsp;            return array[index * 2 + 1];</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-25 09:00</div>
+</div>
+</body>
+</html>

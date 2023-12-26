@@ -1,0 +1,191 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Singleton</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zishi.pattern.creational.sington.im03</a>
+</div>
+
+<h1>Coverage Summary for Class: Singleton (com.zishi.pattern.creational.sington.im03)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Singleton</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/22)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zishi.pattern.creational.sington.im03;
+&nbsp;
+&nbsp;/**
+&nbsp; * 双重检测锁
+&nbsp; * 为了保证懒汉模式的线程安全我们最简单的做法就是给获取实例的方法上加上 synchronized（同步锁）修饰
+&nbsp; */
+&nbsp;public class Singleton {
+&nbsp;    // 声明私有对象
+&nbsp;    private volatile static Singleton instance;
+&nbsp;
+<b class="nc">&nbsp;    private Singleton() {</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // 获取实例（单例对象）
+&nbsp;    // 这样虽然能让懒汉模式变成线程安全的，但由于整个方法都被 synchronized 所包围，因此增加了同步开销，降低了程序的执行效率
+&nbsp;    public synchronized static Singleton getInstance01() {
+<b class="nc">&nbsp;        if (instance == null) {</b>
+<b class="nc">&nbsp;            instance = new Singleton();</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return instance;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // 获取实例（单例对象）
+&nbsp;    // 细心的你可能会发现以下的代码也存在着非线程安全的问题。
+&nbsp;    // 例如，当两个线程同时执行到if (instance == null) {判断时，判断的结果都为 true，于是他们就排队都创建了新的对象，这显然不符合我们的预期
+&nbsp;    public static Singleton getInstance02() {
+<b class="nc">&nbsp;        if (instance == null) {</b>
+<b class="nc">&nbsp;            synchronized (Singleton.class) {</b>
+<b class="nc">&nbsp;                instance = new Singleton();</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return instance;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Double Checked Lock，DCL
+&nbsp;     *
+&nbsp;     * 代码看似完美，其实隐藏着一个不容易被人发现的小问题，
+&nbsp;     * 该问题就出在 new 对象这行代码上，
+&nbsp;     * 也就是 instance = new Singleton() 这行代码。
+&nbsp;     * 这行代码看似是一个原子操作，然而并不是，这行代码最终会被编译成多条汇编指令，它大致的执行流程为以下三个步骤：
+&nbsp;     *
+&nbsp;     * 1. 给对象实例分配内存空间；
+&nbsp;     * 2. 调用对象的构造方法、初始化成员字段；
+&nbsp;     * 3. 将 instance 对象指向分配的内存空间。
+&nbsp;     *
+&nbsp;     * 但由于 CPU 的优化会对执行指令进行重排序，也就说上面的执行流程的执行顺序有可能是 1-2-3，也有可能是 1-3-2。
+&nbsp;     * 假如执行的顺序是 1-3-2，那么当 A 线程执行到步骤 3 时，切换至 B 线程了，而此时 B 线程判断 instance 对象已经指向了对应的内存空间，并非为 null 时就会直接进行返回，而此时因为没有执行步骤 2，因此得到的是一个未初始化完成的对象，这样就导致了问题的诞生。执行时间节点如下表所示：
+&nbsp;     *
+&nbsp;     * 时间点	线程	    执行操作
+&nbsp;     * t1	    A	    instance = new Singleton() 的 1-3 步骤，待执行步骤 2
+&nbsp;     * t2	    B	    if (instance == null) { 判断结果为 false
+&nbsp;     * t3	    B	    返回半初始的 instance 对象
+&nbsp;     *
+&nbsp;     *
+&nbsp;     * 为了解决此问题，我们可以使用关键字 volatile 来修饰 instance 对象，这样就可以防止 CPU 指令重排，从而完美地运行懒汉模式
+&nbsp;     */
+&nbsp;    public static Singleton getInstance03() {
+&nbsp;        // 第一次判断
+<b class="nc">&nbsp;        if (instance == null) {</b>
+<b class="nc">&nbsp;            synchronized (Singleton.class) {</b>
+&nbsp;                // 第二次判断
+<b class="nc">&nbsp;                if (instance == null) {</b>
+<b class="nc">&nbsp;                    instance = new Singleton();</b>
+&nbsp;                }
+<b class="nc">&nbsp;            }</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return instance;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static Singleton getInstance() {
+&nbsp;        // 第一次判断
+<b class="nc">&nbsp;        if (instance == null) {</b>
+<b class="nc">&nbsp;            synchronized (Singleton.class) {</b>
+&nbsp;                // 第二次判断
+<b class="nc">&nbsp;                if (instance == null) {</b>
+<b class="nc">&nbsp;                    instance = new Singleton();</b>
+&nbsp;                }
+<b class="nc">&nbsp;            }</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return instance;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // 类方法
+&nbsp;    public void sayHi() {
+<b class="nc">&nbsp;        System.out.println(&quot;Hi,Java.&quot;);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-25 09:00</div>
+</div>
+</body>
+</html>

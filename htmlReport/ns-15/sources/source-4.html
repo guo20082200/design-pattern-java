@@ -1,0 +1,150 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > TrafficFeeCalculator</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zishi.pattern.behavioral.strategy</a>
+</div>
+
+<h1>Coverage Summary for Class: TrafficFeeCalculator (com.zishi.pattern.behavioral.strategy)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TrafficFeeCalculator</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/9)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zishi.pattern.behavioral.strategy;
+&nbsp;
+&nbsp;/**
+&nbsp; * 那么这么写有什么弊端呢？
+&nbsp; * 第一：每一种出行方式的交通花费的计算方式都写在了TrafficFeeCalculator 类中，这个类承担的职责较多，违反了单一职责原则。
+&nbsp; * 第二：假如王二狗突然想自己开车去，那就需要修改goToTianJinEye这个方法了。违反了开闭原则。
+&nbsp; */
+<b class="nc">&nbsp;public class TrafficFeeCalculator {</b>
+&nbsp;
+&nbsp;    public int goToTianJinEye(CalculateStrategy strategy, int distance) {
+<b class="nc">&nbsp;        return strategy.calculateTrafficFee(distance);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void main(String[] args) {
+<b class="nc">&nbsp;        TrafficFeeCalculator calculator = new TrafficFeeCalculator();</b>
+<b class="nc">&nbsp;        System.out.println(String.format(&quot;乘坐公交车到天津之眼的花费为：%d块人民币&quot;,</b>
+<b class="nc">&nbsp;                calculator.goToTianJinEye(new ByBus(), 10)));</b>
+<b class="nc">&nbsp;        System.out.println(String.format(&quot;乘坐滴滴快车到天津之眼的花费为：%d块人民币&quot;,</b>
+<b class="nc">&nbsp;                calculator.goToTianJinEye(new ByDiDiExpress(), 10)));</b>
+<b class="nc">&nbsp;        System.out.println(String.format(&quot;骑共享单车到天津之眼的花费为：%d块人民币&quot;,</b>
+<b class="nc">&nbsp;                calculator.goToTianJinEye(new BySharedBicycle(), 10)));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /*public int goToTianJinEye(String way, int distance) {
+&nbsp;        int trafficFee = 0;
+&nbsp;        switch (way) {
+&nbsp;            case &quot;bus&quot;:
+&nbsp;                if (distance &lt; 10)
+&nbsp;                    trafficFee = 4;
+&nbsp;                else
+&nbsp;                    trafficFee = 6;
+&nbsp;                break;
+&nbsp;            case &quot;didi&quot;:
+&nbsp;                if (distance &lt; 3)
+&nbsp;                    trafficFee = 8;
+&nbsp;                else
+&nbsp;                    trafficFee = 8 + (distance - 3) * 3;
+&nbsp;                break;
+&nbsp;            case &quot;sharedBicyle&quot;:
+&nbsp;                trafficFee = 2;
+&nbsp;                break;
+&nbsp;            default:
+&nbsp;                break;
+&nbsp;        }
+&nbsp;        return trafficFee;
+&nbsp;    }*/
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-25 09:00</div>
+</div>
+</body>
+</html>

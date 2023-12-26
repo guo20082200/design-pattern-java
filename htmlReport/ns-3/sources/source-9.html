@@ -1,0 +1,304 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Node</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.zishi.algorithm.a02_queue</a>
+</div>
+
+<h1>Coverage Summary for Class: Node (com.zishi.algorithm.a02_queue)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Node</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.zishi.algorithm.a02_queue;
+&nbsp;
+&nbsp;public class CircleLinkedListDemo {
+&nbsp;
+&nbsp;
+&nbsp;    public static int findWinner(int n, int k) {
+&nbsp;        int pos = 0;
+&nbsp;        for (int i = 2; i &lt; n + 1; i++) {
+&nbsp;            pos = (pos + k) % i;
+&nbsp;        }
+&nbsp;
+&nbsp;        return pos + 1;
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void main(String[] args) {
+&nbsp;        /*CircleLinkedList circleLinkedList = new CircleLinkedList();
+&nbsp;        circleLinkedList.init(5);
+&nbsp;        circleLinkedList.traversal();*/
+&nbsp;
+&nbsp;        int winner = findWinner(5, 2);
+&nbsp;        System.out.println(winner);
+&nbsp;    }
+&nbsp;}
+&nbsp;
+&nbsp;//定义SingleLinkedList 管理我们的Hero
+&nbsp;class CircleLinkedList {
+&nbsp;    //创建一个first节点，当前没有编号
+&nbsp;    private Node first = new Node(-1);
+&nbsp;
+&nbsp;    // 约瑟夫森环问题
+&nbsp;    public void josephus() {
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    // 初始化num个节点
+&nbsp;    public void init(int num) {
+&nbsp;
+&nbsp;        //做一个数据校验
+&nbsp;        if (num &lt; 1) {
+&nbsp;            System.out.println(&quot;数据输入错误&quot;);
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+&nbsp;        //创建环形列表
+&nbsp;        Node cur = new Node();
+&nbsp;        for (int i = 1; i &lt; num + 1; i++) {
+&nbsp;            //根据编号创建节点
+&nbsp;            Node node = new Node(i);
+&nbsp;            if (i == 1) {
+&nbsp;                first = node;
+&nbsp;                node.setNext(first);  // 构成环形
+&nbsp;                cur = first;
+&nbsp;            } else {
+&nbsp;                cur.setNext(node);
+&nbsp;                node.setNext(first);
+&nbsp;                cur = node;
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    // 添加元素，追加到最后
+&nbsp;    public void add(int data) {
+&nbsp;        //因为head节点不能动，因此我们需要一个辅助变量 temp
+&nbsp;        Node temp = first;
+&nbsp;        //遍历链表，找到最后
+&nbsp;        while (true) {
+&nbsp;            //当next == null时,找到链表最后
+&nbsp;            if (temp.getNext() == first) {
+&nbsp;                break;
+&nbsp;            }
+&nbsp;            //如果没有找到最后,将temp后移一位
+&nbsp;            temp = temp.getNext();
+&nbsp;        }
+&nbsp;        //当退出while循环时，temp就指向了链表的最后一个节点
+&nbsp;        //将最后这个节点的next指向新的节点
+&nbsp;        Node addNode = new Node(data);
+&nbsp;        temp.setNext(addNode); // 设置最后一个节点的下一个节点为待增加的节点
+&nbsp;        addNode.setNext(first);// 设置待增加的节点的下一个节点为首节点
+&nbsp;    }
+&nbsp;
+&nbsp;    // 按照顺序添加元素
+&nbsp;    public void addByOrder(Node node) {
+&nbsp;        boolean flag = false;
+&nbsp;        Node temp = first;
+&nbsp;        //遍历链表，找到元素的位置
+&nbsp;        while (true) {
+&nbsp;            //当找到链表最后时
+&nbsp;            if (temp.getNext() == first) {
+&nbsp;                break;
+&nbsp;            }
+&nbsp;            if (temp.getNext().getData() &gt; node.getData()) {
+&nbsp;                break;
+&nbsp;            } else if (temp.getNext().getData() == node.getData()) {
+&nbsp;                flag = true;
+&nbsp;                break;
+&nbsp;            }
+&nbsp;            temp = temp.getNext();
+&nbsp;
+&nbsp;        }
+&nbsp;        if (flag) {
+&nbsp;            System.out.printf(&quot;编号%d已经存在&quot;, node.getData());
+&nbsp;        } else {
+&nbsp;            node.setNext(temp.getNext());// 设置待增加的节点的下一个节点为temp的下一个节点
+&nbsp;            temp.setNext(node); // 设置temp的下一个节点为待增加的节点
+&nbsp;
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    //更新节点数据
+&nbsp;    public void update(Node node) {
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    //删除节点： 找到待删除节点的前一个节点
+&nbsp;    public void delete(int no) {
+&nbsp;        Node temp = first;
+&nbsp;        boolean flag = false;
+&nbsp;        //遍历链表，找到最后
+&nbsp;        while (true) {
+&nbsp;            //当next == null时,找到链表最后
+&nbsp;            if (temp.getNext() == first) {
+&nbsp;                break;
+&nbsp;            }
+&nbsp;            if (temp.getNext().getData() == no) {
+&nbsp;                flag = true;
+&nbsp;                break;
+&nbsp;            }
+&nbsp;
+&nbsp;            //如果没有找到最后,将temp后移一位
+&nbsp;            temp = temp.getNext();
+&nbsp;        }
+&nbsp;        if (flag) {
+&nbsp;            temp.setNext(temp.getNext().getNext());
+&nbsp;        } else {
+&nbsp;            System.out.printf(&quot;要删除的编号%d节点不存在&quot;, no);
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    // 遍历循环链表
+&nbsp;    public void traversal() {
+&nbsp;
+&nbsp;        //判断链表是否为空,当first节点的下一个节点还是first，那么为空
+&nbsp;        if (first.getNext() == first) {
+&nbsp;            System.out.println(&quot;链表为空！&quot;);
+&nbsp;            return;
+&nbsp;        }
+&nbsp;        //复制首节点引用
+&nbsp;        Node temp = first;
+&nbsp;        while (true) {
+&nbsp;            //输出节点信息
+&nbsp;            System.out.println(temp);
+&nbsp;
+&nbsp;            //判断是否到链表最后
+&nbsp;            if (temp.getNext() == first) {
+&nbsp;                break;
+&nbsp;            }
+&nbsp;            //将next后移，不后移就是个死循环
+&nbsp;            temp = temp.getNext();
+&nbsp;
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+&nbsp;
+&nbsp;//定义Node ， 每个Node对象就是一个节点
+&nbsp;class Node {
+&nbsp;    private int data;
+&nbsp;    private Node next; //指向下一个节点
+&nbsp;
+<b class="nc">&nbsp;    public Node() {</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //构造器
+<b class="nc">&nbsp;    public Node(int data) {</b>
+<b class="nc">&nbsp;        this.data = data;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public int getData() {
+<b class="nc">&nbsp;        return data;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setData(int data) {
+<b class="nc">&nbsp;        this.data = data;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Node getNext() {
+<b class="nc">&nbsp;        return next;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setNext(Node next) {
+<b class="nc">&nbsp;        this.next = next;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;Node{&quot; +</b>
+&nbsp;                &quot;data=&quot; + data +
+&nbsp;                &#39;}&#39;;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-25 09:00</div>
+</div>
+</body>
+</html>
