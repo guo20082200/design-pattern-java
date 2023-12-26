@@ -5,11 +5,19 @@ import org.jboss.arquillian.junit5.ArquillianExtension;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
 
 import javax.inject.Inject;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -36,7 +44,31 @@ class FlightWithPassengersTest {
     }
 
     @Inject
+    @FlightNumber(number = "AA1234")
     Flight flight;
+
+    @Mock
+    DistancesManager distancesManager;
+
+    @Rule
+    public MockitoRule mockitoRule = MockitoJUnit.rule();
+
+    private static Map<Passenger, Integer> passengersPointsMap = new HashMap<>();
+
+    @BeforeClass
+    public static void setUp() {
+        passengersPointsMap.put(new Passenger("900-45-6809", "Susan Todd", "GB"), 210);
+        passengersPointsMap.put(new Passenger("900-45-6797", "Harry Christensen", "GB"), 420);
+        passengersPointsMap.put(new Passenger("123-45-6799", "Bethany King", "US"), 630);
+    }
+
+    @Test
+    public void testFlightsDistances() {
+        Mockito.when(distancesManager.getPassengersPointsMap()).thenReturn(passengersPointsMap);
+        assertEquals(210, distancesManager.getPassengersPointsMap().get(new Passenger("900-45-6809", "Susan Todd", "GB")).longValue());
+        assertEquals(420, distancesManager.getPassengersPointsMap().get(new Passenger("900-45-6797", "Harry Christensen", "GB")).longValue());
+        assertEquals(630, distancesManager.getPassengersPointsMap().get(new Passenger("123-45-6799", "Bethany King", "US")).longValue());
+    }
 
     // junit5 的 @Test
     @Test

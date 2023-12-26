@@ -17,6 +17,16 @@ public class Flight {
     private String flightNumberRegex = "^[A-Z]{2}\\d{3,4}$";
     private Pattern pattern = Pattern.compile(flightNumberRegex);
 
+    private int distance;
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
     Set<Passenger> passengers = new HashSet<>();
 
     public boolean addPassenger(Passenger passenger) {

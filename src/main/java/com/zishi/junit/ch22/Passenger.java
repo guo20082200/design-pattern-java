@@ -2,6 +2,7 @@ package com.zishi.junit.ch22;
 
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -63,5 +64,18 @@ public class Passenger {
     public String toString() {
         return "Passenger " + getName() + " with identifier: "
                 + getIdentifier() + " from " + getCountryCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Passenger passenger = (Passenger) o;
+        return Objects.equals(identifier, passenger.identifier);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(identifier);
     }
 }
