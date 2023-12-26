@@ -107,6 +107,19 @@
         </dependency>
 
 
+        <!-- https://mvnrepository.com/artifact/org.jbehave/jbehave-core -->
+        <dependency>
+            <groupId>org.jbehave</groupId>
+            <artifactId>jbehave-core</artifactId>
+            <version>5.2.0</version>
+            <!--<exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>-->
+        </dependency>
+
 
     </dependencies>
 
@@ -114,7 +127,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.2</version>
+                <version>3.2.3</version>
             </plugin>
         </plugins>
     </build>
