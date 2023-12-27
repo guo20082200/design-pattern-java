@@ -1,5 +1,6 @@
 package com.zishi.junit.ch22;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -17,6 +18,11 @@ public class Flight {
     private String flightNumberRegex = "^[A-Z]{2}\\d{3,4}$";
     private Pattern pattern = Pattern.compile(flightNumberRegex);
 
+    private Set<Passenger> passengers = new HashSet<Passenger>();
+    public Set<Passenger> getPassengers() {
+        return Collections.unmodifiableSet(passengers);
+    }
+
     private int distance;
 
     public int getDistance() {
@@ -27,7 +33,6 @@ public class Flight {
         this.distance = distance;
     }
 
-    Set<Passenger> passengers = new HashSet<>();
 
     public boolean addPassenger(Passenger passenger) {
         if (passengers.size() >= seats) {
