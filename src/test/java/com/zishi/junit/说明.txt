@@ -1,0 +1,8 @@
+测试的四个步骤：
+1. 单元测试：@Test即可
+2. 集成测试：使用Arquillia和Junit5集成测试
+3. 系统测试: 使用Arquillia和MockIO做系统测试
+4. 验收测试： 使用JbeHave做BDD测试
+
+达到的目标：
+代码覆盖率100%
