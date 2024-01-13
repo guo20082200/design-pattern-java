@@ -17,15 +17,26 @@ import java.util.concurrent.CountDownLatch;
  * api：https://zookeeper.apache.org/doc/r3.6.1/apidocs/zookeeper-server/index.html
  * <p/>
  *
- * @author smilehappiness
- * @Date 2020/6/20 16:09
+ *
+ * 官方自带客户端得缺点：
+ * session会话超时异常时，不支持自动重连，需要手动重新连接，编程繁琐（生产环境中如果网络出现不稳定情况，那么这种情况出现的更加明显）
+ * ZooKeeper的watcher监听是一次性的，注册一次后会失效
+ * 节点数据是二进制，对象数据都需要转换为二进制保存
+ * 不支持递归创建节点，需要先创建父节点再创建子节点
+ * 不支持递归删除节点，需要先删除子节点再删除父节点
+ * 没有领导选举机制，集群情况下可能需要实现stand by，一个服务挂了，另一个需要接替的效果
+ * 客户端只提供了存储byte数组的接口，而项目中一般都会使用对象
+ * 客户端接口需要处理的异常太多，并且通常，我们也不知道如何处理这些异常
+ * 原生zookeeper客户端和服务器端会话的建立是一个异步的过程，也就是说在程序中，我们程序方法在处理完客户端初始化后，立即返回(程序往下执行代码，这样，大多数情况下我们并没有真正构建好一个可用会话，在会话的声明周期处于"CONNECTED"时才算真正建立完毕，所以我们需要使用多线程中的一个工具类CountDownLatch来控制，真正的连接上zk客户端后，才可以继续操作zNode节点)
+ *
+ *
  */
 public class ZookeeperClient01 {
 
     /**
      * 客户端连接地址
      */
-    private static final String ZK_ADDRESS = "ip:2181";
+    private static final String ZK_ADDRESS = "localhost:2181";
     /**
      * 客户端根节点
      */
@@ -62,22 +73,22 @@ public class ZookeeperClient01 {
 
         //2、创建节点
         createNode(ROOT_NODE, "root data1");
-        createNode(ROOT_NODE + "/home", "home data1");
+        //createNode(ROOT_NODE + "/home", "home data1");
 
         //递归创建节点（递归每个节点，并赋相同的值，这种场景用的不是很多）
-        createNodeRecursion(ROOT_NODE_CHILDREN, "recursion data1");
+        //createNodeRecursion(ROOT_NODE_CHILDREN, "recursion data1");
 
         //3、查询节点
-        queryNode(ROOT_NODE);
+       // queryNode(ROOT_NODE);
 
         //4、修改节点
-        updateNodeData(ROOT_NODE, "nice");
+        //updateNodeData(ROOT_NODE, "nice");
 
         //5、单个节点删除（注意：如果节点下有子节点，不能删除--NotEmptyException: KeeperErrorCode = Directory not empty for /root）
         //zookeeper客户端的api里，暂时没找到可以直接删除当前节点以及子节点的方法
         //deleteNode(ROOT_NODE);
         //递归删除节点
-        deleteRecursion(ROOT_NODE_CHILDREN);
+        //deleteRecursion(ROOT_NODE_CHILDREN);
     }
 
     /**
@@ -91,6 +102,10 @@ public class ZookeeperClient01 {
      * @Date 2020/6/20 13:22
      */
     private static void initConnect(String connectAddress, int sessionTimeout) {
+
+        Watcher watcher = event -> {
+
+        };
         try {
             //创建zookeeper客户端对象
             //zookeeper = new ZooKeeper(connectAddress, sessionTimeout, null);
@@ -116,13 +131,13 @@ public class ZookeeperClient01 {
                     System.out.println("zookeeper有新节点【" + watchedEvent.getPath() + "】创建!");
                 }
                 if (Watcher.Event.EventType.NodeDataChanged == type) {
-                    System.out.println("zookeeper有节点【" + watchedEvent.getPath() + "】数据变化!");
+                    System.out.println("zookeeper NodeDataChanged 【" + watchedEvent.getPath() + "】数据变化!");
                 }
                 if (Watcher.Event.EventType.NodeDeleted == type) {
-                    System.out.println("zookeeper有节点【" + watchedEvent.getPath() + "】被删除!");
+                    System.out.println("zookeeper NodeDeleted【" + watchedEvent.getPath() + "】被删除!");
                 }
                 if (Watcher.Event.EventType.NodeChildrenChanged == type) {
-                    System.out.println("zookeeper有子节点【" + watchedEvent.getPath() + "】变化!");
+                    System.out.println("zookeeper NodeChildrenChanged【" + watchedEvent.getPath() + "】变化!");
                 }
             });
 
@@ -130,9 +145,7 @@ public class ZookeeperClient01 {
             countDownLatch.await();
 
             System.out.println("init connect success：" + zookeeper);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
