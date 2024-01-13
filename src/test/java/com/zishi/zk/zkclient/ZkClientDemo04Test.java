@@ -1,4 +1,4 @@
-package com.zishi.zk;
+package com.zishi.zk.zkclient;
 
 
 import org.I0Itec.zkclient.ZkClient;

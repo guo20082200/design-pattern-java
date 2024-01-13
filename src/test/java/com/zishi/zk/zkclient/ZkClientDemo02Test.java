@@ -1,11 +1,6 @@
-package com.zishi.zk;
+package com.zishi.zk.zkclient;
 
 
-import org.I0Itec.zkclient.IZkConnection;
-import org.I0Itec.zkclient.ZkClient;
-import org.I0Itec.zkclient.ZkConnection;
-import org.I0Itec.zkclient.serialize.SerializableSerializer;
-import org.I0Itec.zkclient.serialize.ZkSerializer;
 import org.apache.zookeeper.CreateMode;
 import org.junit.jupiter.api.*;
 
