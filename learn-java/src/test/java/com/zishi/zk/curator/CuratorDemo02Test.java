@@ -24,7 +24,7 @@ public class CuratorDemo02Test {
 
     private static final String ZK_ADDRESS = "localhost:2181";
     private static final int connectionTimeout = 10000; // ms
-    private static final int sessionTimeout = 5000; // ms
+    private static final int sessionTimeout = 50000; // ms
 
     CuratorFramework client = null;
 

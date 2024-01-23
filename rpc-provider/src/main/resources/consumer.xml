@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans.xsd        http://code.alibabatech.com/schema/dubbo        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:property-placeholder/>
 
-    <!--当前项目在整个分布式架构里面的唯一名称，计算依赖关系的标签-->
-    <dubbo:application name="consumer" owner="zishi"/>
+    <dubbo:application name="demo-consumer"/>
 
-    <!--dubbo这个服务所要暴露的服务地址所对应的注册中心-->
-    <!--点对点的方式-->
-    <dubbo:registry address="zookeeper://localhost:2181"/>
-    <!--<dubbo:registry address="zookeeper://localhost:2181" check="false"/>-->
+    <dubbo:registry address="zookeeper://172.16.23.77:2181"/>
 
-    <!--生成一个远程服务的调用代理-->
-    <!--点对点方式-->
-    <!--<dubbo:reference id="providerService"
-                     interface="com.zx.provider.ProviderService"
-                     url="dubbo://localhost:20880/com.zx.provider.ProviderService"/>-->
-
-    <dubbo:reference id="providerService" interface="com.zx.provider.ProviderService"/>
+    <dubbo:reference id="demoService" check="true" interface="com.zishi.xml.provider.DemoService"/>
 
 </beans>
