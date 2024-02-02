@@ -7,6 +7,7 @@ import org.I0Itec.zkclient.ZkConnection;
 import org.I0Itec.zkclient.serialize.SerializableSerializer;
 import org.I0Itec.zkclient.serialize.ZkSerializer;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -63,20 +64,27 @@ public class ZkClientDemo01Test {
     @Test
     void testCreate01() {
         zkClient = new ZkClient(ADDR);
-        System.out.println(zkClient);
+        Assertions.assertNotNull(zkClient);
     }
 
     @Test
     void testCreate02() {
         zkClient = new ZkClient(ADDR, sessionTimeout, connectionTimeout, zkSerializer);
-        System.out.println(zkClient);
+        Assertions.assertNotNull(zkClient);
     }
 
     @Test
     void testCreate03() {
         IZkConnection connection =new ZkConnection(ADDR);
         zkClient = new ZkClient(connection);
-        System.out.println(zkClient);
+        Assertions.assertNotNull(zkClient);
+    }
+
+
+    @Test
+    void testCreate04() {
+        zkClient = new ZkClient(ADDR);
+        Assertions.assertNotNull(zkClient);
     }
 
 
