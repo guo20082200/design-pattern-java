@@ -1,0 +1,2 @@
+http=com.zishi.spi.impl.HttpDownloadStrategy
+sftp=com.zishi.spi.impl.SftpDownloadStrategy

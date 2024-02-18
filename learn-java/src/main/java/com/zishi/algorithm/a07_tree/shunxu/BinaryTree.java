@@ -44,9 +44,9 @@ public class BinaryTree {
         Scanner input = new Scanner(System.in);
         System.out.println("请输入二叉树信息，输入值为0结束输入");
         for (int i = 1; i < array.length; i++) {
-            if (array[i] == null || array[i].equals("0") == true) {
+            if (array[i] == null || array[i].equals("0")) {
                 array[i] = input.nextLine();
-                if (array[i].equals("0") == true) {
+                if (array[i].equals("0")) {
                     break;
                 }
             }
@@ -56,8 +56,8 @@ public class BinaryTree {
     /**
      * 判断二叉树是否为空
      */
-    public boolean isEmpaty() {
-        if (array[1] != null && array[1].equals("0") != true) {
+    public boolean isEmpty() {
+        if (array[1] != null && !array[1].equals("0")) {
             return false;
         } else {
             return true;
@@ -90,7 +90,7 @@ public class BinaryTree {
      * 添加指定结点的左节点
      */
     public void addNodeLeft(int index, String data) {
-        if (array[2 * index] != null && array[2 * index].equals("0") != true) {
+        if (array[2 * index] != null && !array[2 * index].equals("0")) {
             System.out.println("当前结点左节点已有值，是否覆盖？Y/N");
             Scanner input = new Scanner(System.in);
             String in = input.nextLine();
@@ -106,7 +106,7 @@ public class BinaryTree {
      * 添加指定结点的左节点
      */
     public void addNodeRight(int index, String data) {
-        if (array[2 * index + 1] != null && array[2 * index + 1].equals("0") != true) {
+        if (array[2 * index + 1] != null && !array[2 * index + 1].equals("0")) {
             System.out.println("当前结点右节点已有值，是否覆盖？Y/N");
             Scanner input = new Scanner(System.in);
             String in = input.nextLine();
@@ -122,7 +122,7 @@ public class BinaryTree {
      * 返回指定结点的左节点
      */
     public String getLeftNode(int index) {
-        if (array[2 * index] != null && array[2 * index].equals("0") != true) {
+        if (array[2 * index] != null && !array[2 * index].equals("0")) {
             return array[index * 2];
         } else {
             return null;
@@ -133,7 +133,7 @@ public class BinaryTree {
      * 返回指定结点的右节点
      */
     public String getRightNode(int index) {
-        if (array[2 * index + 1] != null && array[2 * index + 1].equals("0") != true) {
+        if (array[2 * index + 1] != null && !array[2 * index + 1].equals("0")) {
             return array[index * 2 + 1];
         } else {
             return null;
