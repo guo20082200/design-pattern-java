@@ -1,4 +1,4 @@
-package com.zishi.algorithm.a07_tree.shunxu;
+package com.zishi.algorithm.a07_tree.t02_shunxu;
 
 import java.util.Scanner;
 

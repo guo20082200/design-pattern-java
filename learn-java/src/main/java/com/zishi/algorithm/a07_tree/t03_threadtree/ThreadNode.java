@@ -1,4 +1,4 @@
-package com.zishi.algorithm.a07_tree.threadtree;
+package com.zishi.algorithm.a07_tree.t03_threadtree;
 
 public class ThreadNode {
     private int data;

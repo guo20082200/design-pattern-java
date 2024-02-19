@@ -1,4 +1,4 @@
-package com.zishi.algorithm.a07_tree.ercha;
+package com.zishi.algorithm.a07_tree.t01_ercha;
 
 /**
  * 实现顺序存储二叉树遍历

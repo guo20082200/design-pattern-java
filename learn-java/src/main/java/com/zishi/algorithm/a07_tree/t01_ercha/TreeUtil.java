@@ -1,4 +1,4 @@
-package com.zishi.algorithm.a07_tree.ercha;
+package com.zishi.algorithm.a07_tree.t01_ercha;
 
 public class TreeUtil {
 
