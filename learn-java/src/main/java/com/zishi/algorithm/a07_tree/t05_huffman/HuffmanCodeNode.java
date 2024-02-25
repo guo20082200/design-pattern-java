@@ -5,11 +5,11 @@ import java.util.LinkedList;
 public class HuffmanCodeNode implements Comparable<HuffmanCodeNode> {
 
     //ch存储当前节点字符，若没有，则为null
-    private Character ch;
+    private Byte b;
     //只有两个值：0或1，若在构建二叉树的过程中该节点为左节点，则val=0,反之，val=1
     private int val;
     //存储字符出现的频次
-    private int frequency;
+    private int weight;
     //左节点
     private HuffmanCodeNode left;
     //右节点
@@ -30,7 +30,7 @@ public class HuffmanCodeNode implements Comparable<HuffmanCodeNode> {
         queue.offer(root);//将根节点入队
         while (!queue.isEmpty()) {
             current = queue.poll();//出队队头元素并访问
-            System.out.print(current.frequency + "-->");
+            System.out.print(current.weight + "-->");
             if (current.left != null)//如果当前节点的左节点不为空入队
             {
                 queue.offer(current.left);
@@ -46,33 +46,31 @@ public class HuffmanCodeNode implements Comparable<HuffmanCodeNode> {
     @Override
     public String toString() {
         return "HuffmanCodeNode{" +
-                "ch=" + ch +
+                "ch=" + b +
                 ", val=" + val +
-                ", frequency=" + frequency +
+                ", frequency=" + weight +
                 '}';
     }
 
-    public HuffmanCodeNode(Character ch, int val, int frequency, HuffmanCodeNode left, HuffmanCodeNode right) {
-        this.ch = ch;
+    public HuffmanCodeNode(Byte b, int val, int weight, HuffmanCodeNode left, HuffmanCodeNode right) {
+        this.b = b;
         this.val = val;
-        this.frequency = frequency;
+        this.weight = weight;
         this.left = left;
         this.right = right;
     }
 
+    public HuffmanCodeNode(Byte b, int val, int weight) {
+        this.b = b;
+        this.val = val;
+        this.weight = weight;
+    }
+
     @Override
     public int compareTo(HuffmanCodeNode o) {
-        return this.frequency - o.frequency;
+        return this.weight - o.weight;
     }
 
-
-    public Character getCh() {
-        return ch;
-    }
-
-    public void setCh(Character ch) {
-        this.ch = ch;
-    }
 
     public int getVal() {
         return val;
@@ -82,12 +80,21 @@ public class HuffmanCodeNode implements Comparable<HuffmanCodeNode> {
         this.val = val;
     }
 
-    public int getFrequency() {
-        return frequency;
+
+    public Byte getB() {
+        return b;
     }
 
-    public void setFrequency(int frequency) {
-        this.frequency = frequency;
+    public void setB(Byte b) {
+        this.b = b;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
     public HuffmanCodeNode getLeft() {
