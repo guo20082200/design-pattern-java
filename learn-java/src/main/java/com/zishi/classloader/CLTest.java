@@ -1,7 +1,7 @@
 package com.zishi.classloader;
 
-import jdk.internal.loader.URLClassPath;
-import jdk.internal.misc.VM;
+//import jdk.internal.loader.URLClassPath;
+//import jdk.internal.misc.VM;
 
 
 public class CLTest {
@@ -119,9 +119,9 @@ public class CLTest {
 
 
 
-        String append = VM.getSavedProperty("jdk.boot.class.path.append");
-
-        System.out.println(append);
+//        String append = VM.getSavedProperty("jdk.boot.class.path.append");
+//
+//        System.out.println(append);
 
     }
 }
