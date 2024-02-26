@@ -1,4 +1,4 @@
-package com.zishi.algorithm;
+package com.zishi.algorithm.a07_tree.t05_huffman;
 
 public class ByteUtil {
 

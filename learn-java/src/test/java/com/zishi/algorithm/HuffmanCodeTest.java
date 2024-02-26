@@ -1,8 +1,7 @@
 package com.zishi.algorithm;
 
+import com.zishi.algorithm.a07_tree.t05_huffman.HuffmanCode;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class HuffmanCodeTest {
 

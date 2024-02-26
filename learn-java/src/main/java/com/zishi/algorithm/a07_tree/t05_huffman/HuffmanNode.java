@@ -2,11 +2,13 @@ package com.zishi.algorithm.a07_tree.t05_huffman;
 
 public class HuffmanNode implements Comparable<HuffmanNode> {
 
-    /*@Override
-    public int compare(HuffmanNode o1, HuffmanNode o2) {
-        return 0;
-    }*/
+    private Byte b;
+    private String value;// 0 1
 
+    private int weight;
+
+    private HuffmanNode left;
+    private HuffmanNode right;
 
     public void preOrder() {//前序遍历
         System.out.print(this);
@@ -31,23 +33,43 @@ public class HuffmanNode implements Comparable<HuffmanNode> {
     }
 
 
-    @Override
-    public int compareTo(HuffmanNode o) {
-        return this.data - o.data;
+
+    public HuffmanNode(Byte b, String value, int weight) {
+        this.b = b;
+        this.value = value;
+        this.weight = weight;
     }
 
-    private HuffmanNode left;
-    private HuffmanNode right;
-    private int data;
-
-    public HuffmanNode(int data) {
-        this.data = data;
-    }
-
-    public HuffmanNode(HuffmanNode left, HuffmanNode right, int data) {
+    public HuffmanNode(Byte b, String value, int weight, HuffmanNode left, HuffmanNode right) {
+        this.b = b;
+        this.value = value;
+        this.weight = weight;
         this.left = left;
         this.right = right;
-        this.data = data;
+    }
+
+    public Byte getB() {
+        return b;
+    }
+
+    public void setB(Byte b) {
+        this.b = b;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
     public HuffmanNode getLeft() {
@@ -66,13 +88,31 @@ public class HuffmanNode implements Comparable<HuffmanNode> {
         this.right = right;
     }
 
-    public int getData() {
-        return data;
+    @Override
+    public int compareTo(HuffmanNode o) {
+        return this.weight - o.weight;
     }
 
-    public void setData(int data) {
-        this.data = data;
+    @Override
+    public String toString() {
+        return "HuffmanNode{" +
+                "b=" + b +
+                ", value=" + value +
+                ", weight=" + weight +
+                '}';
     }
 
 
+    /**
+     * 中序遍历
+     */
+    public void midOrder() {
+        if (this.getLeft() != null) {
+            this.getLeft().midOrder();
+        }
+        System.out.println(this.getWeight());
+        if (this.getRight() != null) {
+            this.getRight().midOrder();
+        }
+    }
 }
