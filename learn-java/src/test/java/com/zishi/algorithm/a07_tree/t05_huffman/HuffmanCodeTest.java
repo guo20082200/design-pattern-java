@@ -17,10 +17,10 @@ class HuffmanCodeTest {
         byte[] contentBytes = CONTENT.getBytes();
         System.out.println("contentBytes:" + contentBytes.length);
         //2. 压缩byte[]，输出byte[]
-        byte[] zipBytes = HuffmanCode.zip(contentBytes);
+        byte[] zipBytes = HuffmanCode.compress(contentBytes);
         System.out.println("zipBytes:" + zipBytes.length);
         //3. 解压缩byte[]
-        byte[] unzipBytes = HuffmanCode.unzip(zipBytes);
+        byte[] unzipBytes = HuffmanCode.uncompress(zipBytes);
         //4. 将byte[]转换为字符串
         String newStr = new String(unzipBytes);
         System.out.println("unzipBytes:" + unzipBytes.length);

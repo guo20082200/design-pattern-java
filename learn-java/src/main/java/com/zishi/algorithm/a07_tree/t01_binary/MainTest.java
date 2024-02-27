@@ -1,4 +1,4 @@
-package com.zishi.algorithm.a07_tree.t01_ercha;
+package com.zishi.algorithm.a07_tree.t01_binary;
 
 public class MainTest {
 

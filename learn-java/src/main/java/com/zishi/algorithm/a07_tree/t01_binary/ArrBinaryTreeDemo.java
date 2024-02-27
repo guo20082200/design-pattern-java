@@ -1,6 +1,6 @@
 // 传入某个数组，能输出该顺序存储二叉树的前，中，后序遍历结果
 
-package com.zishi.algorithm.a07_tree.t01_ercha;
+package com.zishi.algorithm.a07_tree.t01_binary;
  
 import java.util.Arrays;
  
