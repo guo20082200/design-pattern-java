@@ -20,6 +20,21 @@ public class BSTNode {//结点
         this.right = r;
     }
 
+
+    public BSTNode findNode(int key) {
+        BSTNode current = this;
+        while (current != null) {
+            if (key == current.value) {
+                return current;
+            } else if (key < current.value) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+        return null;
+    }
+
     public BSTNode findMin() {
         return this.left == null ? this : this.left.findMin();
     }
@@ -28,8 +43,19 @@ public class BSTNode {//结点
         return node.left == null ? node : node.left.findMin();
     }
 
+    // 查找最小值节点（用于替换待删除节点）
+    private BSTNode findMinNode(BSTNode node) {
+        if (node.left == null)
+            return node;
+        return findMinNode(node.left);
+    }
+
     public BSTNode findMax() {
         return this.right == null ? this : this.right.findMax();
+    }
+
+    public BSTNode findMax(BSTNode root) {
+        return root.right == null ? root : root.right.findMax();
     }
 
     public boolean isContains(int target) {
@@ -87,43 +113,43 @@ public class BSTNode {//结点
     }
 
 
+
     /**
      * 1. 删除的节点没有左右子节点: 这种情况不需要考虑，直接删除即可。
      * 2. 删除的节点没有左子节点，有右子节点: 将删除节点的子节点放到删除的位置即可
      * 3. 删除的节点没有右子节点，有左子节点: 将删除节点的子节点放到删除的位置即可
      * 4. 删除的节点即有右子节点，又有左子节点:
-     *      a. 找到待删除节点的左子树的最大值，并删除，然后替换当前节点的值为找到的最大值即可
-     *      a. 找到待删除节点的右子树的最小值，并删除，然后替换当前节点的值为找到的最小值即可
+     * a. 找到待删除节点的左子树的最大值，并删除，然后替换当前节点的值为找到的最大值即可
+     * a. 找到待删除节点的右子树的最小值，并删除，然后替换当前节点的值为找到的最小值即可
      *
-     * @param target
+     * @param current
+     * @param key
      * @return
      */
-    public BSTNode remove(int target, BSTNode node)// 删除节点
-    {
-        if (node == null) {
+    public BSTNode removeRecursive(BSTNode current, int key) {
+        if (current == null) {
             return null;
         }
-        if (target < node.value) {
-            node.left = remove(target, node.left);
-        } else if (target > node.value) {
-            node.right = remove(target, node.right);
-        } else if (node.left != null && node.right != null) {
-            // 左右节点均不空
-            node.value = findMin(node.right).value;// 找到右侧最小值替代
-            node.right = remove(node.value, node.right);
-        } else // 左右单空或者左右都空
-        {
-            if (node.left == null && node.right == null) {
-                node = null;
-            } else if (node.right != null) {
-                node = node.right;
-            } else if (node.left != null) {
-                node = node.left;
+
+        if (key < current.value) {
+            current.left = removeRecursive(current.left, key);
+        } else if (key > current.value) {
+            current.right = removeRecursive(current.right, key);
+        } else { // 找到了待删除节点
+            if (current.left == null) {
+                return current.right; // 没有左孩子，直接返回右孩子
+            } else if (current.right == null) {
+                return current.left; // 没有右孩子，直接返回左孩子
+            } else {
+                // 有两个孩子，找到右子树的最小节点来替换当前节点
+                BSTNode smallestNode = findMin(current.right);
+                current.value = smallestNode.value; // 替换值
+                current.right = removeRecursive(current.right, smallestNode.value); // 删除替换的最小节点
             }
-            return node;
         }
-        return node;
+        return current;
     }
+
 
     /**
      * 中序遍历
@@ -143,4 +169,6 @@ public class BSTNode {//结点
     public String toString() {
         return " " + value;
     }
+
+
 }

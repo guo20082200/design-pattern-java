@@ -61,7 +61,9 @@ class BinarySortTreeTest {
     }
 
     @Test
-    void delete() {
-
+    void remove() {
+        System.out.println();
+        tree.remove(6);
+        tree.preOrder();
     }
 }

@@ -12,7 +12,28 @@ public class BinarySortTree {
     }
 
     public BinarySortTree(BSTNode root) {
-       this.root = root;
+        this.root = root;
+    }
+
+    /**
+     * 寻找节点
+     *
+     * @param key 待查找的项目
+     * @return
+     */
+    private BSTNode findNode(int key) {
+        /*BSTNode current = root;
+        while (current != null) {
+            if (key == current.value) {
+                return current;
+            } else if (key < current.value) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+        return null;*/ // 如果找不到返回null
+        return root.findNode(key);
     }
 
     /**
@@ -54,8 +75,10 @@ public class BinarySortTree {
     public boolean insert(int target) {
         return root.insert(target);
     }
-
-    public BSTNode delete(int target) {
-        return root.delete(target);
+    
+    // 删除节点
+    public void remove(int key) {
+        BSTNode bstNode = root.removeRecursive(root, key);
     }
+
 }
