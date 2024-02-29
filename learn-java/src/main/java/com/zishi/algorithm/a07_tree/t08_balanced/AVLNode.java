@@ -7,6 +7,15 @@ public class AVLNode<T extends Comparable<T>> {
     private AVLNode<T> left;       // 左子节点
     private AVLNode<T> right;      // 右子节点
 
+    public void midOrder() {
+        if (this.getLeft() != null) {
+            this.getLeft().midOrder();
+        }
+        System.out.println(this.getData() + " " + this.getHeight());
+        if (this.getRight() != null) {
+            this.getRight().midOrder();
+        }
+    }
 
     public AVLNode(T data) {
         this.data = data;
