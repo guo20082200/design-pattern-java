@@ -39,6 +39,15 @@ public class AVLNode<T extends Comparable<T>> {
         height = 1 + Math.max(height(left), height(right));
     }
 
+    // 寻找节点的最大值（用于删除节点后替代父节点值）
+    public AVLNode<T> findMaxInLeftSubtree() {
+        AVLNode<T> current = this;
+        while (current.right != null) {
+            current = current.right;
+        }
+        return current;
+    }
+
     public T getData() {
         return data;
     }

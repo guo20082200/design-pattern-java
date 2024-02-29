@@ -65,9 +65,77 @@ public class AVLTree<T extends Comparable<T>> {
         return node;
     }
 
-    // 删除节点并保持平衡
-    public void remove(T data) {
-        //root = insertRec(root, data);
+    // 删除节点
+    public void delete(T data) {
+        root = deleteRec(root, data);
+    }
+
+    private AVLNode<T> deleteRec(AVLNode<T> node, T data) {
+        if (node == null) {
+            return null;
+        }
+
+        int cmp = data.compareTo(node.getData());
+        if (cmp < 0) {
+            node.setLeft(deleteRec(node.getLeft(), data));
+        } else if (cmp > 0) {
+            node.setRight(deleteRec(node.getRight(), data));
+        } else { // 找到要删除的节点
+            if (node.getLeft() == null) {
+                return node.getRight();
+            } else if (node.getRight() == null) {
+                return node.getLeft();
+            }
+
+            // 有两个子节点，找到右子树的最小节点作为替代节点
+            AVLNode<T> successor = node.getRight();
+            AVLNode<T> predecessorParent = node;
+            while (successor.getLeft() != null) {
+                predecessorParent = successor;
+                successor = successor.getLeft();
+            }
+
+            // 替代节点值
+            node.setData(successor.getData());
+
+            // 删除替代节点
+            if (predecessorParent.getLeft() == successor) {
+                predecessorParent.setLeft(successor.getRight());
+            } else {
+                predecessorParent.setRight(successor.getRight());
+            }
+
+            // 继续删除原替代节点的位置
+            node = node.getRight();
+        }
+
+        // 更新节点高度
+        node.updateHeight();
+
+        // 检查是否需要平衡调整
+        int balance = node.getBalance();
+
+        // 左左失衡
+        if (balance > 1 && node.getLeft().getBalance() >= 0) {
+            return rightRotate(node);
+        }
+
+        // 右右失衡
+        if (balance < -1 && node.getRight().getBalance() <= 0) {
+            return leftRotate(node);
+        }
+
+        // 左右或右左失衡
+        if (balance > 1 && node.getLeft().getBalance() < 0) {
+            node.setLeft(leftRotate(node.getLeft()));
+            return rightRotate(node);
+        }
+
+        if (balance < -1 && node.getRight().getBalance() > 0) {
+            node.setRight(rightRotate(node.getRight()));
+            return leftRotate(node);
+        }
+        return node;
     }
 
 
