@@ -13,6 +13,65 @@ public class BinarySearch {
 
 
     }
+
+    /**
+     * 非递归查找
+     * @param array
+     * @param target
+     * @return
+     */
+    public static int binarySearchIterative(int[] array, int target) {
+        int left = 0;
+        int right = array.length - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2; // 防止溢出，使用这种方法计算中间位置
+
+            if (array[mid] == target) {
+                return mid;
+            } else if (array[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        // 如果未找到目标值，返回-1表示未找到
+        return -1;
+    }
+
+
+    /**
+     * 二分查找递归算法
+     * @param array
+     * @param target
+     * @param left
+     * @param right
+     * @return
+     */
+    public static int binarySearchRecursive(int[] array, int target, int left, int right) {
+        if (left > right) {
+            return -1; // 表示未找到目标值
+        }
+
+        int mid = left + (right - left) / 2;
+
+        if (array[mid] == target) {
+            return mid;
+        } else if (array[mid] < target) {
+            return binarySearchRecursive(array, target, mid + 1, right);
+        } else {
+            return binarySearchRecursive(array, target, left, mid - 1);
+        }
+    }
+
+    /**
+     * 递归查找
+     * @param arr
+     * @param left
+     * @param right
+     * @param findVal
+     * @return
+     */
     public static List<Integer> binarySearch(int[] arr,int left,int right,int findVal){
         if (left > right) return new ArrayList<Integer>();
         int mid = (left + right)/2;
