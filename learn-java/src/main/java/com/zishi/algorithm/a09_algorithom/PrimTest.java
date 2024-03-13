@@ -29,7 +29,8 @@ public class PrimTest {
 
         String[] vertexes = {"A", "B", "C", "D", "E", "F", "G"};
         int[] visitedArr = new int[vertexes.length];
-        List<Edge> edges = init();
+        Graph graph = new Graph();
+        List<Edge> edges = graph.edges;
         visitedArr[0] = 1;
 
         List<String> res = Lists.newArrayList();
@@ -81,21 +82,6 @@ public class PrimTest {
 
     }
 
-
-    public static List<Edge> init() {
-        List<Edge> res = Lists.newArrayList();
-        res.add(new Edge("A", "B", 5));
-        res.add(new Edge("A", "C", 7));
-        res.add(new Edge("A", "G", 2));
-        res.add(new Edge("B", "G", 3));
-        res.add(new Edge("B", "D", 9));
-        res.add(new Edge("C", "E", 8));
-        res.add(new Edge("D", "F", 4));
-        res.add(new Edge("E", "G", 4));
-        res.add(new Edge("E", "F", 5));
-        res.add(new Edge("F", "G", 6));
-        return res;
-    }
 }
 
 
