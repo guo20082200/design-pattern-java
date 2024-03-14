@@ -1,6 +1,7 @@
 package com.zishi.algorithm.a09_algorithom;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 import java.util.*;
@@ -9,14 +10,21 @@ import java.util.stream.Collectors;
 public class Graph {
 
     public List<Edge> edges;
+    public List<String> vertexes;
 
     public Graph() {
-        this.edges = init();
+        //this.edges = init();
+        this(init());
     }
 
     public Graph(List<Edge> edges) {
         this.edges = edges;
+        Set<String> starts = this.edges.stream().map(x -> x.start).collect(Collectors.toSet());
+        Set<String> ends = this.edges.stream().map(x -> x.end).collect(Collectors.toSet());
+        starts.addAll(ends);
+        this.vertexes = Lists.newArrayList(starts);
     }
+
 
     /**
      * 从给定的边集合edges里面创建最小的生成树
@@ -152,6 +160,91 @@ public class Graph {
 
         return false;
     }
+
+    /**
+     * 我们加入的边的两个顶点不能都指向同一个终点，否则将构成回路
+     * @param edges
+     * @return
+     */
+    public boolean existsCycleBy(List<Edge> edges) {
+
+        return false;
+    }
+
+
+    /**
+     * Dijkstra 迪杰斯特拉
+     * @param edges
+     * @return
+     */
+    public Map<String, Integer> dijkstra(List<Edge> edges) {
+        /**
+         * 键：顶点字母
+         * 值：距离参考点的距离
+         */
+        Map<String, Integer> visitedMap = Maps.newLinkedHashMap();
+        visitedMap.put(vertexes.get(0), 0);
+        Map<String, Integer> unvisitedMap = Maps.newLinkedHashMap();
+        for (int i = 1; i < vertexes.size(); i++) {
+            unvisitedMap.put(vertexes.get(i), Integer.MAX_VALUE);
+        }
+
+        // 开始更新距离
+        String currentVertex = vertexes.get(0);
+        while (visitedMap.size() != vertexes.size()) {
+
+            // 找到 unvisitedMap 里面的最小的距离，不是邻接点集合的最小距离
+            String finalCurrentVertex = currentVertex;
+
+            // 找到所有的邻接点，
+            List<Edge> collect = edges.stream()
+                    .filter(x ->
+                            ((x.start.equals(finalCurrentVertex) && unvisitedMap.containsKey(x.end)) ||
+                                    (x.end.equals(finalCurrentVertex)) && unvisitedMap.containsKey(x.start)))
+                    .collect(Collectors.toList());
+
+            // 计算所有的邻接点距离参考点的距离， 并更新 unvisitedMap
+            Integer preDistance = visitedMap.get(finalCurrentVertex);
+
+            for (Edge edge : collect) {
+                String v;
+                if (edge.start.equals(finalCurrentVertex)) {
+                    v = edge.end;
+                } else {
+                    v = edge.start;
+                }
+                int newDistance = preDistance + edge.weight;
+                int oldDistance = unvisitedMap.get(v);
+                // 新计算的距离小于原来的距离才进行更新的操作
+                if (newDistance < oldDistance) {
+                    unvisitedMap.put(v, newDistance);
+                }
+            }
+
+            // 从 unvisitedMap 里面取到最小的距离
+            Integer minDistance = unvisitedMap.values().stream().min(Comparator.comparingInt(o -> o)).orElse(Integer.MAX_VALUE);
+
+            Set<Map.Entry<String, Integer>> entries = unvisitedMap.entrySet();
+            for (Map.Entry<String, Integer> entry : entries) {
+                String key = entry.getKey();
+                Integer value = entry.getValue();
+                if (minDistance.equals(value)) {
+                    currentVertex = key;
+                    break;
+                }
+            }
+            System.out.println("currentVertex:" + currentVertex);
+            // 更新 visitedMap
+            visitedMap.put(currentVertex, minDistance);
+            // 更新 unvisitedMap
+            unvisitedMap.remove(currentVertex);
+        }
+
+        //visitedMap.forEach((k, v) -> System.out.println(k + ": " + v));
+
+        return visitedMap;
+    }
+
 
     private static List<Edge> init() {
         List<Edge> res = Lists.newArrayList();

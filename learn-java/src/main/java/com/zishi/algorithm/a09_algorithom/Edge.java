@@ -32,6 +32,27 @@ public class Edge implements Comparator<Edge> {
     }
 
 
+    public String getStart() {
+        return start;
+    }
 
+    public void setStart(String start) {
+        this.start = start;
+    }
 
+    public String getEnd() {
+        return end;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
 }

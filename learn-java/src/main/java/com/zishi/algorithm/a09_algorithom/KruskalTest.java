@@ -24,18 +24,9 @@ import java.util.List;
  */
 public class KruskalTest {
 
-
-    // 我们加入的边的两个顶点不能都指向同一个终点，否则将构成回路
-
     public static void main(String[] args) {
         Graph graph = new Graph();
         List<Edge> edges = graph.edges;
 
-
-
     }
-
-
-
-
 }
