@@ -11,6 +11,7 @@
     <modules>
         <module>rpc-provider</module>
         <module>learn-java</module>
+        <module>learn-ml</module>
     </modules>
 
     <properties>
@@ -227,36 +228,6 @@
     </dependencyManagement>
 
     <dependencies>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
-            <version>${curator.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-framework</artifactId>
-            <version>${curator.version}</version>
-        </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-test -->
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-test</artifactId>
-            <version>${curator.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-x-discovery -->
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-x-discovery</artifactId>
-            <version>${curator.version}</version>
-        </dependency>
 
 
         <dependency>
