@@ -7,16 +7,17 @@ object Test03_FunctionParameter {
       println(str)
     }
 
-    f1("alice")
-    f1("aaa", "bbb", "ccc")
+    f1("alice") // ArraySeq(alice)
+    f1("aaa", "bbb", "ccc") // ArraySeq(aaa, bbb, ccc)
 
     //    （2）如果参数列表中存在多个参数，那么可变参数一般放置在最后
     def f2(str1: String, str2: String*): Unit = {
       println("str1: " + str1 + "，str2: " + str2)
     }
 
-    f2("alice")
-    f2("aaa", "bbb", "ccc")
+    // 可变参数不确定，底层实现的方式也不一样
+    f2("alice") // str1: alice，str2: List()
+    f2("aaa", "bbb", "ccc") // str1: aaa，str2: ArraySeq(bbb, ccc)
 
     //    （3）参数默认值，一般将有默认值的参数放置在参数列表的后面
     def f3(name: String = "eeeee"): Unit = {
