@@ -1,8 +1,6 @@
 package com.zishi.scala.a01.okk02
 
 import com.zishi.scala.Student
-
-
 object Test02_Variable {
   def main(args: Array[String]): Unit = {
     // 声明一个变量的通用语法

@@ -3,7 +3,7 @@ package com.zishi.scala.a02.okk05
 object Test06_HighOrderFunction02 {
   def main(args: Array[String]): Unit = {
     // 2. 函数作为参数进行传递
-    // 定义二元计算函数
+    // 定义二元计算函数： 定义⼀个返回⼀个返回函数的函数的函数
     def dualEval(op: (Int, Int) => Int, a: Int, b: Int): Int = {
       op(a, b)
     }
