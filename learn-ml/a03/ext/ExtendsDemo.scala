@@ -17,7 +17,7 @@ object ExtendsDemo {
 
 class Animal {
   @BeanProperty
-  private var name = _
+  private var name = ""
 
   def say(): Unit = {
     println("Animal")
