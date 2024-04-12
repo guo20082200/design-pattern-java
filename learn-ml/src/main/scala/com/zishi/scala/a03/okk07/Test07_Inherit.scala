@@ -1,5 +1,12 @@
 package com.zishi.scala.a03.okk07
 
+/**
+ * 继承：
+ * 1. class ChildClassName[(argList1)] extends BaseClassName[(args)] { body }
+ * 2. ⼦类继承⽗类属性和⽅法。
+ * 3. 可以调⽤⽗类构造器，但感觉好像很局限，
+ * 4.
+ */
 object Test07_Inherit {
   def main(args: Array[String]): Unit = {
     /**
