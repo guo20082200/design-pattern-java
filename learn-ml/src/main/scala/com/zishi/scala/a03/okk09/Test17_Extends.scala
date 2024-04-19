@@ -10,13 +10,13 @@ object Test17_Extends {
     person.sayHi()
 
     // 类型判断
-    println("student is Student17: " + student.isInstanceOf[Student17])
-    println("student is Person17: " + student.isInstanceOf[Person17])
-    println("person is Person17: " + person.isInstanceOf[Person17])
-    println("person is Student: " + person.isInstanceOf[Student17])
+    println("student is Student17: " + student.isInstanceOf[Student17]) //true
+    println("student is Person17: " + student.isInstanceOf[Person17]) // true
+    println("person is Person17: " + person.isInstanceOf[Person17]) // true
+    println("person is Student: " + person.isInstanceOf[Student17]) // true
 
     val person2: Person17 = new Person17("cary", 35)
-    println("person2 is Student17: " + person2.isInstanceOf[Student17])
+    println("person2 is Student17: " + person2.isInstanceOf[Student17]) // false
 
     // 类型转换
     if (person.isInstanceOf[Student17]) {
@@ -24,7 +24,7 @@ object Test17_Extends {
       newStudent.study()
     }
 
-    println(classOf[Student17])
+    println(classOf[Student17]) // class com.zishi.scala.a03.okk09.Student17
 
     // 2. 测试枚举类
     println(WorkDay.MONDAY)
