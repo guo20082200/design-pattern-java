@@ -13,7 +13,7 @@ class ListDemoTest {
   }
 
   @Test
-  @DisplayName("Array的创建")
+  @DisplayName("List的创建")
   def testListCreate(): Unit = {
     // 1. 创建一个List
     val ls01 = List(23, 65, 87)
