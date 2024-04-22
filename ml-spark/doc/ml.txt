@@ -1,0 +1,13 @@
+spark机器学习库：
+1. ML算法：常用机器学习算法，例如：分类，回归，聚簇和协同过滤
+2. 特征化：特征提取，转换，降维和选择
+3. Pipelines：重构的工具，估计和tuning ML Pipelines
+4. Persistence持久化：保存和加载算法，模型和管道（saving and load algorithms, models, and Pipelines）
+5. 工具类：线性代数，统计和数据处理等等
+
+
+利用spark的mliib构建机器学习模型并预测新的数据流程：
+1. 加载数据
+2. 特征提取
+3. 模型训练
+4. 预测结果
