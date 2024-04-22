@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.zishi</groupId>
-    <artifactId>learn-ml</artifactId>
+    <artifactId>learn-scala</artifactId>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>

@@ -11,7 +11,7 @@
     <modules>
         <module>rpc-provider</module>
         <module>learn-java</module>
-        <module>learn-ml</module>
+        <module>learn-scala</module>
     </modules>
 
     <properties>
