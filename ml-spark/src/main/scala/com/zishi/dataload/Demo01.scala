@@ -12,7 +12,13 @@ object Demo01 {
       .master("local[4]")
       .getOrCreate()
 
-    val df = spark.read.format("image").option("dropInvalid", true).load("data/mllib/images/origin/kittens")
+    // [PATH_NOT_FOUND] Path does not exist: file:/D:/my-learn/design-pattern-java/data/mllib/images/origin/kittens.
+    val df = spark.read.format("image").option("dropInvalid", true).load("ml-spark/data/mllib/images/origin/kittens")
+
+    println(".............." + df.first())
+
+    spark.close()
+
   }
 
 }
