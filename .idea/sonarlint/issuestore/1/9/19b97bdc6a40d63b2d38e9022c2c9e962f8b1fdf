@@ -1,0 +1,15 @@
+
+o
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ƒı¿°
+k
+java:S1104"UMake isVisited a static final constant or non-public and provide accessors if needed.(ÔË¦
+?	java:S1068"+Replace this use of System.err by a logger.(µñ
+@	java:S106\"+Replace this use of System.out by a logger.(ë…Ä¥
+A	java:S106ˆ"+Replace this use of System.out by a logger.(ë…Ä¥
+A	java:S106’"+Replace this use of System.out by a logger.(ÊÖ¡
+L
+java:S1854¦"5Remove this useless assignment to local variable "n".(Âü†
+=
+java:S1481¦"&Remove this unused "n" local variable.(Âü†
+F	java:S106Ã"+Replace this use of System.out by a logger.(šú©Ûúÿÿÿÿ
+W	java:S125À"<This block of commented-out lines of code should be removed.(•’Õ³ıÿÿÿÿ

@@ -28,7 +28,9 @@ public class DemoConsumer {
                 .start();    // 启动Dubbo
 
         // 和本地bean一样使用demoService
-        // 通过Interface获取远程服务接口代理，不需要依赖ReferenceConfig对象
+        // 通过Interface获取远程服务接口代理，不需要依赖ReferenceConfig
+        //
+        // 对象
         DemoService demoService = DubboBootstrap.getInstance().getCache().get(DemoService.class);
         demoService.sayHello("Dubbo");
 
