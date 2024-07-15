@@ -10,9 +10,8 @@ import java.util.function.Consumer;
 
 /**
  * 异步多线程创建 Flux create方法
- *
+ * <p>
  * 异步单线程创建 Flux push 方法
- *
  */
 public class FluxDemo05Test {
 
@@ -69,16 +68,51 @@ public class FluxDemo05Test {
                     new MyEventListener<String>() {
 
                         public void onDataChunk(List<String> chunk) {
+                            System.out.println("................ onDataChunk ");
                             for (String s : chunk) {
                                 sink.next(s);
                             }
                         }
 
                         public void processComplete() {
+                            System.out.println("............. processComplete");
                             sink.complete();
                         }
                     });
         });
+
+        bridge.subscribe(System.out::println);
+    }
+
+    /**
+     * OverflowStrategy: 背压处理的枚举类
+     * IGNORE: 完全忽略下游的背压请求，当下游队列满的时候这可能产生 IllegalStateException
+     * ERROR： 当下游不能跟得上（上游发送信号的速度）的时候抛出 IllegalStateException
+     * DROP： 当下游没有准备好接收信号的时候，丢弃掉
+     * LATEST： 下游只从上游获取最新的信号
+     * BUFFER： 当下游不能跟得上（上游发送信号的速度）的时候缓存所有的信号，注意：缓存无解流可能导致OutOfMemoryError
+     *
+     */
+    @Test
+    void testFluxCreate03_02() {
+        MyEventProcessor<String> eventProcessor = new MyEventProcessor<>();
+        Flux<String> bridge = Flux.create(sink -> {
+            eventProcessor.register(
+                    new MyEventListener<String>() {
+
+                        public void onDataChunk(List<String> chunk) {
+                            System.out.println("................ onDataChunk ");
+                            for (String s : chunk) {
+                                sink.next(s);
+                            }
+                        }
+
+                        public void processComplete() {
+                            System.out.println("............. processComplete");
+                            sink.complete();
+                        }
+                    });
+        }, FluxSink.OverflowStrategy.DROP);
 
         bridge.subscribe(System.out::println);
     }
@@ -103,7 +137,6 @@ public class FluxDemo05Test {
         producer.accept("我来了2");
 
     }
-
 
 
     @Test
