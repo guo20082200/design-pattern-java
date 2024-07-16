@@ -13,7 +13,7 @@
         <module>learn-java</module>
         <module>learn-scala</module>
         <module>ml-spark</module>
-        <module>react-stream-demo</module>
+        <module>react-stream-learn</module>
     </modules>
 
     <properties>

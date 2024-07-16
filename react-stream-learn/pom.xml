@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.zishi.react</groupId>
-    <artifactId>react-stream-demo</artifactId>
+    <artifactId>react-stream-learn</artifactId>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
