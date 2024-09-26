@@ -1,0 +1,49 @@
+package org.zishi.mq.websocketserver.d03.controller;
+
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.zishi.mq.websocketserver.d03.WebSocketMsgVo;
+import org.zishi.mq.websocketserver.d03.config.WebSocketService;
+
+/**
+ * websocket stomp协议controller
+ *
+ * @author zhengwen
+ **/
+@Slf4j
+@RestController
+@RequestMapping("/web/socket/stomp")
+public class WebSocketStompController {
+
+    @Autowired
+    private WebSocketService webSocketService;
+
+    /**
+     * 发送信息 stomp
+     *
+     * @param webSocketMsgVo 信息对象vo
+     * @return 统一出参
+     */
+    @PostMapping("/sendStompMsg")
+    @MessageMapping("/sendStompMsg")
+    public Object sendStompMsg(@RequestBody WebSocketMsgVo<?> webSocketMsgVo) {
+        log.info("--发送信息--");
+        return webSocketService.sendStompMsg(webSocketMsgVo);
+    }
+
+
+    @PostMapping("/other")
+    public Object other() {
+        log.info("--发送other信息--");
+        return webSocketService.sendOther();
+    }
+
+
+}
+

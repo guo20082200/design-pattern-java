@@ -1,0 +1,19 @@
+database:
+  host: localhost:5432
+  schema: auth
+  username: postgres
+  password: 123456
+
+spring:
+  application:
+    name: jdbctemplate-demo
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${database.host}/${database.schema}
+    username: ${database.username}
+    password: ${database.password}
+    hikari:
+      maximum-pool-size: 100
+      max-lifetime: 30000
+      minimum-idle: 20
+      idle-timeout: 3000
