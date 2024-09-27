@@ -1,4 +1,4 @@
-package org.zishi.mq.websocketserver.d03.controller;
+package doc.d03.controller;
 
 
 import lombok.extern.slf4j.Slf4j;

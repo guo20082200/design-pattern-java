@@ -1,4 +1,4 @@
-package org.zishi.mq.websocketserver.d03.config;
+package doc.d03.config;
 
 
 import org.springframework.context.annotation.Configuration;
@@ -50,10 +50,7 @@ public class WebSocketStompConfig implements WebSocketMessageBrokerConfigurer {
          * addEndpoint是添加到WebMvcStompWebSocketEndpointRegistration的集合中，
          * 所以可以添加多个端点
          */
-        /*registry.addEndpoint("/stomp/websocket")
-                .setAllowedOriginPatterns("*")
-                .addInterceptors(new MyHandshakeInterceptor())
-                .setHandshakeHandler(new MyHandshakeHandler());*/
+        registry.addEndpoint("/stomp/websocket");
     }
 
     @Override
