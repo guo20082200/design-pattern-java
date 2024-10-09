@@ -4,6 +4,8 @@ package org.zishi.mq.websocketserver.d03.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +20,7 @@ import org.zishi.mq.websocketserver.d03.service.WebSocketService;
  **/
 @Slf4j
 @RestController
-@RequestMapping("/web/socket/stomp")
+@MessageMapping("/web/socket/stomp")
 public class WebSocketStompController {
 
     @Autowired
@@ -30,8 +32,9 @@ public class WebSocketStompController {
      * @param webSocketMsgVo 信息对象vo
      * @return 统一出参
      */
-    @PostMapping("/sendStompMsg")
+    //@PostMapping("/sendStompMsg")
     @MessageMapping("/sendStompMsg")
+    @SendTo("/user/zs/ad")
     public Object sendStompMsg(@RequestBody WebSocketMsgVo<?> webSocketMsgVo) {
         log.info("--发送信息--");
         return webSocketService.sendStompMsg(webSocketMsgVo);
@@ -45,8 +48,9 @@ public class WebSocketStompController {
     }
 
 
-    @PostMapping("/user/queue/message")
-    @MessageMapping("/queue/message")
+    //@PostMapping("/user/queue/message")
+    @MessageMapping("/user/queue/message")
+    @SendTo("/user/zs/ad")
     public Object userQueueMessage() {
         log.info("--发送userQueueMessage信息--");
         return webSocketService.userQueueMessage();

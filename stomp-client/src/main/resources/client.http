@@ -1,0 +1,2 @@
+
+GET http://localhost:8081/hello/sendMsg?sessionId=cb893613-7f3d-0a5d-11cb-c974c3e78578

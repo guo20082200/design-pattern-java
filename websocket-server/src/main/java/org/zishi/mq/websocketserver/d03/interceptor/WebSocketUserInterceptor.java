@@ -21,7 +21,7 @@ public class WebSocketUserInterceptor implements ChannelInterceptor {
 
     @Override
     public void afterSendCompletion(@Nullable Message<?> message, @Nullable MessageChannel channel, boolean sent, @Nullable Exception ex) {
-        log.info("--websocket信息发送后--");
+        //log.info("--websocket信息发送后--");
         assert message != null;
         assert channel != null;
         ChannelInterceptor.super.afterSendCompletion(message, channel, sent, ex);
@@ -34,7 +34,7 @@ public class WebSocketUserInterceptor implements ChannelInterceptor {
     @SuppressWarnings("rawtypes")
     @Override
     public Message<?> preSend(@Nullable Message<?> message, @Nullable MessageChannel channel) {
-        log.info("--websocket信息发送前--");
+        //log.info("--websocket信息发送前--");
         assert message != null;
         StompHeaderAccessor accessor = MessageHeaderAccessor.getAccessor(message, StompHeaderAccessor.class);
         if (accessor != null) {

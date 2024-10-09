@@ -20,7 +20,7 @@ public class MyHandshakeInterceptor implements HandshakeInterceptor {
      */
     @Override
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
-        // log.info("--websocket的http连接握手之前--");
+        //log.info("--websocket的http连接握手之前--");
         ServletServerHttpRequest req = (ServletServerHttpRequest) request;
         WebSocketUser user = null;
         //获取token认证

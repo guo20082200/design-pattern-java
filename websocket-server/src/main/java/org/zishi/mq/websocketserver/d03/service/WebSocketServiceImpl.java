@@ -45,7 +45,8 @@ public class WebSocketServiceImpl implements WebSocketService {
 
         WebSocketMsgVo<String> vo = new WebSocketMsgVo<>();
         String res = JacksonUtil.writeValueAsString(vo);
-        simpMessagingTemplate.convertAndSend("/ad/zs", res);
+        //simpMessagingTemplate.convertAndSend("/ad/zs", res);
+        simpMessagingTemplate.convertAndSend("/user/zs/ad", res);
         return "OK";
     }
 
@@ -53,7 +54,8 @@ public class WebSocketServiceImpl implements WebSocketService {
     public Object userQueueMessage() {
         WebSocketMsgVo<String> vo = new WebSocketMsgVo<>();
         String res = JacksonUtil.writeValueAsString(vo);
-        simpMessagingTemplate.convertAndSend("/queue/message", res);
+        //simpMessagingTemplate.convertAndSend("/user/queue/message", res);
+        simpMessagingTemplate.convertAndSend("/user/zs/ad", res);
         return "OK";
     }
 }

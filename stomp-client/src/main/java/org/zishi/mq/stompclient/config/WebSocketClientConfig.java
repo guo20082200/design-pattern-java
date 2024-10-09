@@ -1,8 +1,11 @@
 package org.zishi.mq.stompclient.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.converter.StringMessageConverter;
+import org.springframework.messaging.simp.stomp.StompSession;
 import org.springframework.messaging.simp.stomp.StompSessionHandler;
 import org.springframework.web.socket.client.WebSocketClient;
 import org.springframework.web.socket.client.standard.StandardWebSocketClient;
@@ -15,12 +18,23 @@ import org.zishi.mq.stompclient.handler.ClientStompSessionHandler;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @author zishi
  */
 @Configuration
-public class MyConfig {
+public class WebSocketClientConfig {
+
+    private static final Logger logger = LoggerFactory.getLogger(WebSocketClientConfig.class);
+    private static final Map<String, StompSession> SESSION_MAP = new ConcurrentHashMap<>();
+
+    public StompSession getSessionById(String sessionId) {
+        return SESSION_MAP.get(sessionId);
+    }
 
     /**
      * 基本的websocket客户端配置：
@@ -44,10 +58,15 @@ public class MyConfig {
      * @return WebSocketStompClient
      */
     @Bean
-    public WebSocketStompClient webSocketStompClient(WebSocketClient webSocketClient, StompSessionHandler stompSessionHandler) {
+    public WebSocketStompClient webSocketStompClient(WebSocketClient webSocketClient, StompSessionHandler stompSessionHandler) throws ExecutionException, InterruptedException {
         WebSocketStompClient webSocketStompClient = new WebSocketStompClient(webSocketClient);
         webSocketStompClient.setMessageConverter(new StringMessageConverter());
-        webSocketStompClient.connect("http://localhost:8080/stomp/websocketJS?token=abc", stompSessionHandler);
+        CompletableFuture<StompSession> completableFuture = webSocketStompClient.connectAsync("http://localhost:8082/stomp/websocketJS?token=abc", stompSessionHandler);
+
+        StompSession session = completableFuture.get();
+        logger.info("WebSocketStompClient获取到session的ID为：{}", session.getSessionId());
+        // 将session保存到redis
+        SESSION_MAP.put(session.getSessionId(), session);
         return webSocketStompClient;
     }
 

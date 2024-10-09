@@ -16,7 +16,7 @@ import java.util.Map;
 public class MyHandshakeHandler extends DefaultHandshakeHandler {
     @Override
     protected Principal determineUser(ServerHttpRequest request, WebSocketHandler wsHandler, Map<String, Object> attributes) {
-        // log.info("--websocket的http连接握手之后--");
+        //log.info("--websocket的http连接握手之后--");
         //设置认证用户
         return (Principal) attributes.get("user");
     }
