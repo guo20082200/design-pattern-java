@@ -27,7 +27,19 @@ public class ClientStompSessionHandler extends StompSessionHandlerAdapter {
         //这里需要自己写逻辑，这里只是简单的演示
         //session.acknowledge()
         logger.info("客户端已连接： headers {}", connectedHeaders);
-        session.subscribe("/topic2/def", this);
+        //session.subscribe("/topic2/def", this);
+        session.subscribe("/topic2/def", new StompFrameHandler() {
+            @Override
+            @Nonnull
+            public Type getPayloadType(@Nonnull StompHeaders headers) {
+                return byte[].class;
+            }
+            @Override
+            public void handleFrame(@Nonnull StompHeaders headers, Object payload) {
+                //todo 只能接收到byte[]数组，没时间研究原因
+                System.out.println(new String((byte[])payload));
+            }
+        });
         String message = "hello 3333333333333333333333333";
         logger.info("客户端发送：{}", message);
         session.send("/app/greeting2", message);
