@@ -4,10 +4,9 @@ import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.messaging.simp.stomp.StompCommand;
-import org.springframework.messaging.simp.stomp.StompHeaders;
-import org.springframework.messaging.simp.stomp.StompSession;
-import org.springframework.messaging.simp.stomp.StompSessionHandlerAdapter;
+import org.springframework.messaging.simp.stomp.*;
+
+import java.lang.reflect.Type;
 
 
 /**
@@ -26,11 +25,12 @@ public class ClientStompSessionHandler extends StompSessionHandlerAdapter {
     @Override
     public void afterConnected(StompSession session, @Nonnull StompHeaders connectedHeaders) {
         //这里需要自己写逻辑，这里只是简单的演示
+        //session.acknowledge()
         logger.info("客户端已连接： headers {}", connectedHeaders);
-        session.subscribe("/topic/greeting", this);
-        String message = "hello";
+        session.subscribe("/topic2/def", this);
+        String message = "hello 3333333333333333333333333";
         logger.info("客户端发送：{}", message);
-        session.send("/ad/az", message);
+        session.send("/app/greeting2", message);
     }
 
     /**

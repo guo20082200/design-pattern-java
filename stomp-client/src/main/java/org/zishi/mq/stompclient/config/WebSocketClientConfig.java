@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.converter.ByteArrayMessageConverter;
 import org.springframework.messaging.converter.StringMessageConverter;
 import org.springframework.messaging.simp.stomp.StompSession;
 import org.springframework.messaging.simp.stomp.StompSessionHandler;
@@ -61,12 +62,19 @@ public class WebSocketClientConfig {
     public WebSocketStompClient webSocketStompClient(WebSocketClient webSocketClient, StompSessionHandler stompSessionHandler) throws ExecutionException, InterruptedException {
         WebSocketStompClient webSocketStompClient = new WebSocketStompClient(webSocketClient);
         webSocketStompClient.setMessageConverter(new StringMessageConverter());
-        CompletableFuture<StompSession> completableFuture = webSocketStompClient.connectAsync("http://localhost:8082/stomp/websocketJS?token=abc", stompSessionHandler);
+        //webSocketStompClient.setMessageConverter(new ByteArrayMessageConverter());
+        CompletableFuture<StompSession> completableFuture = webSocketStompClient.connectAsync("http://localhost:8081/stomp/websocketJS?username=zhangsan&token=abc", stompSessionHandler);
 
         StompSession session = completableFuture.get();
         logger.info("WebSocketStompClient获取到session的ID为：{}", session.getSessionId());
         // 将session保存到redis
         SESSION_MAP.put(session.getSessionId(), session);
+
+        //WebSocketClient webSocketClient1 = webSocketStompClient.getWebSocketClient();
+        //webSocketClient1.
+        //session.send()
+
+
         return webSocketStompClient;
     }
 
