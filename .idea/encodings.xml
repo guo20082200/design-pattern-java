@@ -15,8 +15,12 @@
     <file url="file://$PROJECT_DIR$/rpc-provider/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/stomp-client/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/stomp-server/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/websocket-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/websocket-parent/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/websocket-parent/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/websocket-parent/stomp-client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/websocket-parent/stomp-rabbitmq-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/websocket-parent/stomp-rabbitmq-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/websocket-parent/stomp-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/websocket-parent/websocket-server/src/main/java" charset="UTF-8" />
   </component>
 </project>

@@ -15,6 +15,8 @@
         <module>ml-spark</module>
         <module>react-stream-learn</module>
         <module>learn-kt</module>
+        <module>websocket-parent</module>
+        <module>websocket-parent/stomp-rabbitmq-server</module>
     </modules>
 
     <properties>
