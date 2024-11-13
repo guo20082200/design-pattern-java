@@ -14,7 +14,15 @@
         <option value="$PROJECT_DIR$/websocket-server/pom.xml" />
         <option value="$PROJECT_DIR$/stomp-client/pom.xml" />
         <option value="$PROJECT_DIR$/stomp-server/pom.xml" />
+        <option value="$PROJECT_DIR$/security-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/juc-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/juc-demo2/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/juc-demo/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="PDMPlugin">

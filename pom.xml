@@ -17,6 +17,7 @@
         <module>learn-kt</module>
         <module>websocket-parent</module>
         <module>websocket-parent/stomp-rabbitmq-server</module>
+        <module>weka-demo</module>
     </modules>
 
     <properties>
@@ -234,7 +235,6 @@
 
     <dependencies>
 
-
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -245,8 +245,6 @@
             <artifactId>lombok</artifactId>
             <scope>compile</scope>
         </dependency>
-
-
 
     </dependencies>
 

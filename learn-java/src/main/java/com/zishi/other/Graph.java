@@ -1,4 +1,4 @@
-package com.zishi;
+package com.zishi.other;
 
 import java.util.*;
 

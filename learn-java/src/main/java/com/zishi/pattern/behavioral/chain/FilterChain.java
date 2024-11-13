@@ -5,7 +5,7 @@ import java.util.List;
 
 public class FilterChain implements Filter {
 
-    private List<Filter> filters = new ArrayList<Filter>();
+    private List<Filter> filters = new ArrayList<>();
     int index = 0;    //标记执行到第几个filter
 
     //把函数的返回值设为FilterChain，返回this,就能方便链式编写代码
