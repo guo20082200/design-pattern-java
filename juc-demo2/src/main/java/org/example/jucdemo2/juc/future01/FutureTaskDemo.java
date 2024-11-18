@@ -13,25 +13,25 @@ import java.util.concurrent.FutureTask;
  * 合理利用线程池来执行FutureTask，避免创建过多线程导致资源浪费和性能下降。
  * @author zishi
  */
-public class FutureTaskDemo {
-
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
-
-
-        FutureTask<String> futureTask = new FutureTask<>(() -> "hello");
-
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.execute(futureTask);
-
-        // 阻塞
-        String s = futureTask.get();
-        System.out.println(s);
-
-        executor.shutdown();
-
-
-    }
-}
+//public class FutureTaskDemo {
+//
+//    public static void main(String[] args) throws ExecutionException, InterruptedException {
+//
+//
+//        FutureTask<String> futureTask = new FutureTask<>(() -> "hello");
+//
+//        ExecutorService executor = Executors.newSingleThreadExecutor();
+//        executor.execute(futureTask);
+//
+//        // 阻塞
+//        String s = futureTask.get();
+//        System.out.println(s);
+//
+//        executor.shutdown();
+//
+//
+//    }
+//}
 /**
 1. FutureTask的应用场景
 

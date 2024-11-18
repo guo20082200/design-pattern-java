@@ -1,5 +1,6 @@
 package org.example.jucdemo2.juc.future01;
 
+import org.example.jucdemo2.pool.ExecutorServiceConfig;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,24 +13,10 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * @author zishi
  */
-@RestController
-@RequestMapping("/executor")
+@RestController("ExecutorController3433")
+@RequestMapping("/executor333")
 public class ExecutorController {
 
-    private static final RejectedExecutionHandler DEFAULT_HANDLER = new ThreadPoolExecutor.AbortPolicy();
-
-
-    /**
-     * 创建固定大小的线程池:
-     * final ExecutorService executor = Executors.newFixedThreadPool(1);
-     * final ExecutorService executor = Executors.newSingleThreadExecutor();
-     * final ExecutorService executor = Executors.newCachedThreadPool();
-     */
-    final ExecutorService executor = Executors.newFixedThreadPool(1);
-
-    private static final ExecutorService EXECUTOR = new ThreadPoolExecutor(1, 1, 0L,
-            TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>(1),
-            Executors.defaultThreadFactory(), DEFAULT_HANDLER);
 
     final ReentrantLock lock = new ReentrantLock();
 
@@ -39,7 +26,7 @@ public class ExecutorController {
         // 没有执行的任务进入队列
         // 队列满的时候执行线程池的拒绝策略
         //EXECUTOR.execute(new Task("xxxx" + System.currentTimeMillis()));
-        Future<?> submit = EXECUTOR.submit(new Task2());
+        Future<?> submit = ExecutorServiceConfig.EXECUTOR.submit(new Task2());
 
         /*
          *  isDone() 方法来判断任务是否完成，如果任务完成，返回true

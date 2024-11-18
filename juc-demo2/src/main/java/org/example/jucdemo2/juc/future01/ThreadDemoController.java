@@ -19,7 +19,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author zishi
  */
 @RestController
-@RequestMapping("/hello")
+@RequestMapping("/threadDemo")
 public class ThreadDemoController {
 
     /**
