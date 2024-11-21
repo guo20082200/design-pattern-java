@@ -3,51 +3,93 @@ package org.example.jucdemo2.volatiled;
 import lombok.Data;
 import org.junit.jupiter.api.Test;
 
+import java.util.concurrent.TimeUnit;
+
 public class VolatileTest {
 
-    /*public static void main(String[] args) throws InterruptedException {
-        RunThread myThread = new RunThread();
-        myThread.start();
-        Thread.sleep(3000);
-        myThread.setRunning(false);
-        System.out.println("isRunning 的值已经设置为了 false");
-        Thread.sleep(1000);
-        System.out.println(myThread.isRunning);
-    }*/
+    static boolean flag = true;
 
     @Test
-    void test() throws InterruptedException {
+    void test2() throws InterruptedException {
+        new Thread(() -> {
+            while (flag) {
 
-        Person person = new Person();
+            }
+            System.out.println("adddd end");
+        }, "xxx").start();
+
+        TimeUnit.SECONDS.sleep(3);
+        flag = false;
+        System.out.println("flag is " + flag);
+    }
+
+    /**
+     * public volatile static boolean flag = true;
+     *
+     * 1. 当成员变量不加volatile时，程序不会停止
+     * 2. 当成员变量加volatile时，程序会停止
+     * @param args
+     * @throws InterruptedException
+     */
+    public static void main(String[] args) throws InterruptedException {
+        /*new Thread(() -> {
+            while (flag) {
+
+            }
+            System.out.println("adddd end");
+        }, "xxx").start();
+
+        TimeUnit.SECONDS.sleep(3);
+        flag = false;
+        System.out.println("flag is " + flag);*/
 
         new Thread(() -> {
             int i = 0;
-            while (person.flag) {
-                System.out.println("person flag： " + (i++));
+            while (Person.flag) {
+                //System.out.println("person flag： " + (i++));
             }
-
             System.out.println("a end");
         },"a").start();
 
+        TimeUnit.SECONDS.sleep(3);
+        Person.flag = false;
+        System.out.println("Person flag is " + Person.flag);
+    }
 
+    /**
+     * 当前执行结果和main方法不一致，
+     * 怀疑是 @Test 注解导致的
+     * @throws InterruptedException
+     */
+    @Test
+    void test() throws InterruptedException {
 
-        Thread.sleep(5);
         new Thread(() -> {
-            person.flag = false;
+            int i = 0;
+            while (Person.flag) {
+                //System.out.println("person flag： " + (i++));
+            }
+            System.out.println("a end");
+        },"a").start();
+
+        TimeUnit.SECONDS.sleep(3);
+        Person.flag = false;
+
+
+       /* new Thread(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(3);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            Person.flag = false;
             System.out.println("ddddddddddddddd");
-        },"b").start();
+        },"b").start();*/
 
     }
 }
 
-@Data
-class Person {
 
-
-    public boolean flag = true;
-    //public volatile int number = 45;
-
-}
 
 
 
