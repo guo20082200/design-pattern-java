@@ -11,6 +11,8 @@ public class LongAdderDemoTest {
 
     public static void main(String[] args) throws InterruptedException {
 
+        System.out.println(2 << 3);
+
     }
 
     @RepeatedTest(value = 10)
