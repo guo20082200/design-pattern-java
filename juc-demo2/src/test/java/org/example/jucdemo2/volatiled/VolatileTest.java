@@ -32,21 +32,10 @@ public class VolatileTest {
      * @throws InterruptedException
      */
     public static void main(String[] args) throws InterruptedException {
-        /*new Thread(() -> {
-            while (flag) {
-
-            }
-            System.out.println("adddd end");
-        }, "xxx").start();
-
-        TimeUnit.SECONDS.sleep(3);
-        flag = false;
-        System.out.println("flag is " + flag);*/
-
         new Thread(() -> {
             int i = 0;
             while (Person.flag) {
-                //System.out.println("person flag： " + (i++));
+                System.out.println("person flag： " + (i++));
             }
             System.out.println("a end");
         },"a").start();

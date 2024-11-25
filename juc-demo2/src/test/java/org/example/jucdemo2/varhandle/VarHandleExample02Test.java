@@ -154,9 +154,6 @@ public class VarHandleExample02Test {
 
         }
 
-
-
-
     }
 
     @Nested
