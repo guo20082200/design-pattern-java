@@ -1,5 +1,7 @@
 package org.example.jucdemo2.varhandle;
 
+import org.junit.jupiter.api.Test;
+
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.VarHandle;
 import java.util.concurrent.TimeUnit;
@@ -41,6 +43,19 @@ public class VarHandleExample05Test {
     static class MyClass {
         int value;
         static int value2;
+    }
+
+    @Test
+    void test() throws NoSuchFieldException, IllegalAccessException {
+
+        VarHandle threadProbe = MethodHandles.privateLookupIn(Thread.class, MethodHandles.lookup())
+                .findVarHandle(Thread.class, "threadLocalRandomProbe", int.class);
+
+
+        //MethodHandles.Lookup lookup = MethodHandles.lookup();
+        //VarHandle threadProbe = lookup.findVarHandle(Thread.class, "threadLocalRandomProbe", int.class);
+        Object o = threadProbe.get(Thread.currentThread());
+        System.out.println(o);
     }
 }
 
