@@ -17,6 +17,7 @@
         <option value="$PROJECT_DIR$/security-demo/pom.xml" />
         <option value="$PROJECT_DIR$/juc-demo/pom.xml" />
         <option value="$PROJECT_DIR$/juc-demo2/pom.xml" />
+        <option value="$PROJECT_DIR$/core-001/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
