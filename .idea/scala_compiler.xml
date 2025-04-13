@@ -2,6 +2,6 @@
 <project version="4">
   <component name="ScalaCompilerConfiguration">
     <option name="incrementalityType" value="IDEA" />
-    <profile name="Maven 1" modules="core-001,learn-ml,learn-scala,ml-spark" />
+    <profile name="Maven 1" modules="core-001,learn-ml,learn-scala,learn-spark,ml-spark" />
   </component>
 </project>
