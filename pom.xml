@@ -18,6 +18,8 @@
         <module>websocket-parent</module>
         <module>websocket-parent/stomp-rabbitmq-server</module>
         <module>weka-demo</module>
+        <module>juc-demo01</module>
+        <module>xxx-ai</module>
     </modules>
 
     <properties>
