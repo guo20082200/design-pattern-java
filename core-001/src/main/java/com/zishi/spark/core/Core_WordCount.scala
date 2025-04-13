@@ -1,4 +1,4 @@
-package com.zishi.sp.core
+package com.zishi.spark.core
 
 import org.apache.spark.launcher.JavaModuleOptions
 import org.apache.spark.sql.SparkSession
@@ -24,9 +24,8 @@ object Core_WordCount {
 
     //val session = SparkSession.builder().master("local-cluster[8,2,1024]").appName("WC").getOrCreate()
 
-
-
     // 关闭连接
     sc.stop()
+
   }
 }
