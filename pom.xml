@@ -12,7 +12,6 @@
         <module>rpc-provider</module>
         <module>learn-java</module>
         <module>learn-scala</module>
-        <module>ml-spark</module>
         <module>react-stream-learn</module>
         <module>learn-kt</module>
         <module>websocket-parent</module>
