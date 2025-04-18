@@ -1,4 +1,4 @@
-package com.zishi.dataload.ss01
+package com.zishi.spark.dataload.ss01
 
 import org.apache.spark.sql.SparkSession
 

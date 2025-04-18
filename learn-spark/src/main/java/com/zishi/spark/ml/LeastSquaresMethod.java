@@ -1,8 +1,7 @@
-package com.zishi.scala.okk.ml.linear;
+package com.zishi.spark.ml;
 
 /**
  * 线性回归，一元一次函数（二元线性回归） y = ax + b
- *
  * 多元线性回归：
  * y = a0 + a_1 * x_1 + a_2 * x_2 + .... + a_n * x_n
  */
@@ -46,17 +45,12 @@ public class LeastSquaresMethod {
 
     /**
      * 多元线性回归求解，通过矩阵的偏导数为0求解
-     *
      * 系数矩阵= ([(inputX转置) * inputX]求逆) * inputX转置 *
      *
      * @param inputX：输入的x变量，二维矩阵
      * @param inputY：输入的y变量，一维向量
      */
     public static double[] multiLinearRegression(double[][] inputX, double[] inputY) {
-
-
-
-
         //return new double[]{a, b};
         return null;
     }

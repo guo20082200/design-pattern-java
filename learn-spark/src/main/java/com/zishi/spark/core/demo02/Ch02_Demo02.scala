@@ -1,4 +1,4 @@
-package com.zishi.dataload.ss0201
+package com.zishi.spark.core.demo02
 
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
