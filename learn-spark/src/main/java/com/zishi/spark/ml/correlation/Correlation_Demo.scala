@@ -78,26 +78,31 @@ object Correlation_Demo {
     //    val result = calculatePearson(x, y)
     //    println(s"Pearson相关系数: $result")
 
+    val a = Seq(1, 0, 0, -2.0)
+    val b = Seq(6, 7, 0, 8.0)
+    val res = calculatePearson(a, b)
+    println(s"Pearson相关系数: $res")
+
 
     val x = Seq(80.0, 90.0, 70.0, 60.0, 100.0)
     //println(x.zipWithIndex) // List((80.0,0), (90.0,1), (70.0,2), (60.0,3), (100.0,4))
     //println(x.zipWithIndex.sortBy(_._1)) // List((60.0,3), (70.0,2), (80.0,0), (90.0,1), (100.0,4))
     //println(x.zipWithIndex.sortBy(_._1).zipWithIndex) // List(((60.0,3),0), ((70.0,2),1), ((80.0,0),2), ((90.0,1),3), ((100.0,4),4))
-//    println(x.zipWithIndex.sortBy(_._1).zipWithIndex.map { case ((_, originalIndex), rankIndex) =>
-//      (originalIndex, rankIndex + 1) // 排名从1开始
-//    }) // List((3,1), (2,2), (0,3), (1,4), (4,5))
+    //    println(x.zipWithIndex.sortBy(_._1).zipWithIndex.map { case ((_, originalIndex), rankIndex) =>
+    //      (originalIndex, rankIndex + 1) // 排名从1开始
+    //    }) // List((3,1), (2,2), (0,3), (1,4), (4,5))
 
-//    println(x.zipWithIndex.sortBy(_._1).zipWithIndex.map { case ((_, originalIndex), rankIndex) =>
-//      (originalIndex, rankIndex + 1) //
-//    }.sortBy(_._1) // 按原始顺序排序 // List((0,3), (1,4), (2,2), (3,1), (4,5))
-//      .map(_._2.toDouble)) // List(3.0, 4.0, 2.0, 1.0, 5.0)
+    //    println(x.zipWithIndex.sortBy(_._1).zipWithIndex.map { case ((_, originalIndex), rankIndex) =>
+    //      (originalIndex, rankIndex + 1) //
+    //    }.sortBy(_._1) // 按原始顺序排序 // List((0,3), (1,4), (2,2), (3,1), (4,5))
+    //      .map(_._2.toDouble)) // List(3.0, 4.0, 2.0, 1.0, 5.0)
 
     val y = Seq(85.0, 95.0, 60.0, 75.0, 90.0)
 
-//    println(y.zipWithIndex.sortBy(_._1).zipWithIndex.map { case ((_, originalIndex), rankIndex) =>
-//        (originalIndex, rankIndex + 1) //
-//      }.sortBy(_._1)
-//      .map(_._2.toDouble)) // List(3.0, 5.0, 1.0, 2.0, 4.0)
+    //    println(y.zipWithIndex.sortBy(_._1).zipWithIndex.map { case ((_, originalIndex), rankIndex) =>
+    //        (originalIndex, rankIndex + 1) //
+    //      }.sortBy(_._1)
+    //      .map(_._2.toDouble)) // List(3.0, 5.0, 1.0, 2.0, 4.0)
 
     val result = calculateSpearman(x, y)
     println(s"Spearman相关系数: $result")

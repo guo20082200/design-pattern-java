@@ -1,4 +1,4 @@
-package com.zishi.sp.core
+package com.zishi.spark.core.demo01
 
 import com.twitter.chill.KryoSerializer
 import org.apache.spark.rdd.RDD

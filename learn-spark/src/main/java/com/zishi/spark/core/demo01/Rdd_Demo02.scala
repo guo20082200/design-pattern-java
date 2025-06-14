@@ -1,4 +1,4 @@
-package com.zishi.sp.core
+package com.zishi.spark.core.demo01
 
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}

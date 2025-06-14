@@ -1,4 +1,4 @@
-package com.zishi.sp.core
+package com.zishi.spark.core.demo01
 
 import org.apache.spark._
 import org.apache.spark.util.{AccumulatorV2, LongAccumulator}

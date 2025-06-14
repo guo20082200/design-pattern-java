@@ -1,0 +1,17 @@
+POST http://10.230.8.88/supplier-select/select/tbinquiry/querySupplierByUserId
+Content-Type: application/json
+authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiIzNDA4NzgiLCJyblN0ciI6IkI3V2RuOHoySXR6VkdhbHYyTFhyTFhWRmxwY2tsdTJ3IiwidXNlckluZm8iOnsic3RhZmZObyI6IjM0MDg3OCJ9fQ.eEo0W9ptt0Ln9pabyk8t0kxyLNEELONomO144_lDQWo
+currentuserid: 340878
+environment: 56
+
+{
+
+}
+
+
+###
+POST http://10.230.8.88:36161/select/tbinquiry/querySupplierByUserId
+Content-Type: application/json
+authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiIzNDA4NzgiLCJyblN0ciI6IkI3V2RuOHoySXR6VkdhbHYyTFhyTFhWRmxwY2tsdTJ3IiwidXNlckluZm8iOnsic3RhZmZObyI6IjM0MDg3OCJ9fQ.eEo0W9ptt0Ln9pabyk8t0kxyLNEELONomO144_lDQWo
+currentuserid: 340878
+environment: 56
