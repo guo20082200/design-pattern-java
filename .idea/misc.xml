@@ -24,6 +24,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/juc-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/juc-demo01/pom.xml" />
         <option value="$PROJECT_DIR$/ml-spark/pom.xml" />
       </set>
     </option>

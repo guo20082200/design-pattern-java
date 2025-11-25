@@ -1,4 +1,4 @@
-package com.zishi.dataload.ss03
+package com.zishi.spark.dataload.ss03
 
 import breeze.linalg._
 

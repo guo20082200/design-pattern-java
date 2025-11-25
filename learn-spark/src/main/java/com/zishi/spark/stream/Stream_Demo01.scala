@@ -1,6 +1,7 @@
 package com.zishi.spark.stream
 
 import org.apache.spark.rdd.RDD
+import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.{SparkConf, SparkContext}
 
 
@@ -26,23 +27,23 @@ object Stream_Demo01 {
 
   def main(args: Array[String]): Unit = {
 
-    //1.初始化 Spark 配置信息
-    val sparkConf = new
-        SparkConf().setMaster("local[*]").setAppName("StreamWordCount")
-    //2.初始化 SparkStreamingContext
+    //1. Create a local StreamingContext with two working thread and batch interval of 3 second.
+    val sparkConf = new SparkConf().setMaster("local[*]").setAppName("StreamWordCount")
+    //2. 初始化 SparkStreamingContext
     val ssc = new StreamingContext(sparkConf, Seconds(3))
-    //3.通过监控端口创建 DStream，读进来的数据为一行行
-    val lineStreams = ssc.socketTextStream("linux1", 9999)
-    //将每一行数据做切分，形成一个个单词
+    //3. Create a DStream that will connect to hostname:port, like localhost:9999
+    val lineStreams = ssc.socketTextStream("localhost", 9999)
+    // 4. Split each line into words
     val wordStreams = lineStreams.flatMap(_.split(" "))
-    //将单词映射成元组（word,1）
+    //5. Count each word in each batch
     val wordAndOneStreams = wordStreams.map((_, 1))
-    //将相同的单词次数做统计
+    //  将相同的单词次数做统计
     val wordAndCountStreams = wordAndOneStreams.reduceByKey(_+_)
-    //打印
+    //6. Print the first ten elements of each RDD generated in this DStream to the console
     wordAndCountStreams.print()
-    //启动 SparkStreamingContext
+    //7. 启动 SparkStreamingContext
     ssc.start()
+    //8. Wait for the computation to terminate
     ssc.awaitTermination()
   }
 }
