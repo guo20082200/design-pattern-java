@@ -13,13 +13,13 @@ import java.lang.reflect.Constructor;
 import java.util.Arrays;
 
 @SpringBootApplication
-public class MvcDemoApplication implements CommandLineRunner {
+public class MvcDemoApplication /*implements CommandLineRunner*/ {
 
-    private final ApplicationContext applicationContext;
+  /*  private final ApplicationContext applicationContext;
 
     public MvcDemoApplication(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
-    }
+    }*/
 
     public static void main(String[] args) {
         SpringApplication.run(MvcDemoApplication.class, args);
@@ -27,7 +27,7 @@ public class MvcDemoApplication implements CommandLineRunner {
 
 
 
-    @Override
+    /*@Override
     public void run(String... args) throws Exception {
         ArgumentResolver resolver = SpringArgumentResolver.from(applicationContext);
 
@@ -36,13 +36,13 @@ public class MvcDemoApplication implements CommandLineRunner {
         serviceA.run();
     }
 
-    /**
+    *//**
      *  自动构造器注入方法, 但是该方法只适合实现类。不支持接口。
      * @param type
      * @param resolver
      * @return
      * @param <T>
-     */
+     *//*
     static <T> T createInstance(Class<T> type, ArgumentResolver resolver) {
         try {
             Constructor<?> constructor = Arrays.stream(type.getConstructors())
@@ -57,5 +57,5 @@ public class MvcDemoApplication implements CommandLineRunner {
         } catch (Exception e) {
             throw new RuntimeException("Failed to create instance of " + type, e);
         }
-    }
+    }*/
 }
